@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Screen;
+use App\Models\Screen;
 
 class ScreensTableSeeder extends Seeder
 {

@@ -9,5 +9,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
+    $screens = \App\Models\Screen::with('pages')->get();
+    return view('app')->withScreens($screens);
 });
