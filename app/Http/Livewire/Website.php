@@ -7,11 +7,13 @@ use App\Models\Screen;
 
 class Website extends Component
 {
-    public $screen;
+    public $currentScreen;
+    public $screens;
 
     public function __construct()
     {
-        $this->screen = Screen::first();
+        $this->currentScreen = Screen::first();
+        $this->screens = Screen::all();
     }
 
     public function render()

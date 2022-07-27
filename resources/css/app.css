@@ -5,15 +5,46 @@
 @tailwind utilities;
 
 body {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.bg-gradient {
     background: rgb(7,28,62);
     background: linear-gradient(310deg, rgba(7,28,62,1) 0%, rgba(12,40,82,1) 100%);
+    z-index: -10;
+}
+
+.bg-stars i {
+    position: absolute;
+    display: block;
+    line-height: 0;
+    opacity: .2;
+    z-index: 1000;
+    width: 32px;
+    height: 32px;
+    transition: .5s opacity;
+}
+
+.bg-stars i:hover {
+    opacity: 1;
 }
 
 .heading {
-    font: 800 60px Arial;
+    font-family: Ubuntu, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 60px;
     text-transform: uppercase;
     text-indent: -1em;
+}
+
+.outlined {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-color: #c57e5b;
-    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-width: 1px;
 }
