@@ -35,6 +35,10 @@ body {
     opacity: 1;
 }
 
+.menu-toggle {
+    font-size: 1.8em;
+}
+
 .heading {
     font-family: Ubuntu, Arial, sans-serif;
     font-weight: 900;
@@ -47,6 +51,23 @@ body {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-color: #c57e5b;
     -webkit-text-stroke-width: 1px;
+}
+
+/*** Scroll Snipping ***/
+
+@layer utilities {
+    .snap {
+        scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
+    }
+    .snap-y {
+        --scroll-snap-direction: y;
+    }
+    .snap-mandatory {
+        --scroll-snap-constraint: mandatory;
+    }
+    .snap-start {
+        scroll-snap-align: start;
+    }
 }
 
 /*** Animations ***/
