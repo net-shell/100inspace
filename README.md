@@ -8,15 +8,14 @@ This project is based on Laravel, also leveraging Filament, Alpine.js and CSS3.
 
 1. Make sure you have set the database credentials (and other relevant data) in the `.env` file.
 
-2. Run these commands:
+2. Initial Setup:
 ```
 composer install
 
+php artisan key:generate
 php artisan migrate
 php artisan db:seed
-
-npm install
-npm run build
+php artisan shield:install
 ```
 
 3. (Optional) Create admin user:
@@ -24,4 +23,10 @@ npm run build
 php artisan make:filament-user
 ```
 
-4. Visit `/admin` to access the administration.
+4. Build the assets:
+```
+npm install
+npm run build
+```
+
+5. Visit `/admin` to access the administration.

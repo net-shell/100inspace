@@ -44,13 +44,13 @@
     </section>
 
     <!-- Header -->
-    <header class="fixed z-20 hidden w-full p-8" :class="{ 'hidden': !hasStarted }">
+    <header class="fixed z-30 hidden w-full p-8" :class="{ 'hidden': !hasStarted }">
         <div class="flex items-center justify-between w-full">
             <div class="flex items-center text-2xl">
                 <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
                 <span>{{ env('APP_NAME') }}</span>
             </div>
-            <div class="flex justify-end w-1/2 content-right">
+            <div class="flex justify-end content-right">
                 <a class="menu-toggle" href="javascript:void(0);" x-on:click="showMenu = true">
                     <i class="fa-solid fa-bars"></i>
                 </a>
@@ -63,9 +63,11 @@
         @foreach ($currentScreen->pages as $page)
         <section class="relative w-full h-screen snap-start">
             <div class="absolute left-1/2 top-1/4 right-1/4 bottom-1/4">
+                @if($page->title)
                 <h1 class="heading outlined">
                     {{ $page->title }}
                 </h1>
+                @endif
                 <div class="content-block">
                     {!! html_entity_decode($page->text) !!}
                 </div>

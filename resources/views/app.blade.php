@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Nitrax and NetShell Bulgaria">
 
         <title>{{ env('APP_NAME') }}</title>
 
