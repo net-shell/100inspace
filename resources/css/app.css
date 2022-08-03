@@ -5,6 +5,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/*** Tailwind Extensions ***/
+
+@layer utilities {
+    .snap {
+        scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
+    }
+    .snap-y {
+        --scroll-snap-direction: y;
+    }
+    .snap-mandatory {
+        --scroll-snap-constraint: mandatory;
+    }
+    .snap-start {
+        scroll-snap-align: start;
+    }
+
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
+
+/*** Website Styles ***/
+
 body {
     font-family: 'Source Sans Pro', Arial, sans-serif;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -53,23 +81,6 @@ body {
     -webkit-text-stroke-width: 1px;
 }
 
-/*** Scroll Snipping ***/
-
-@layer utilities {
-    .snap {
-        scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
-    }
-    .snap-y {
-        --scroll-snap-direction: y;
-    }
-    .snap-mandatory {
-        --scroll-snap-constraint: mandatory;
-    }
-    .snap-start {
-        scroll-snap-align: start;
-    }
-}
-
 /*** Animations ***/
 
 .anim-splash {
@@ -78,13 +89,20 @@ body {
 }
 
 .anim-splash-fade {
+    transition: transform 1s;
     animation: fadeOut 1;
     animation-duration: 1s;
     animation-fill-mode: forwards;
     transform: scale(4);
 }
 
-.anim-fade-in-up {
-    animation: fadeInUp 1;
+.anim-fade-in {
+    animation: fadeIn 1;
     animation-duration: 1s;
+}
+
+.anim-fade-out {
+    animation: fadeOut 1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
