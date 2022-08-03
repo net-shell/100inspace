@@ -1,9 +1,11 @@
 <div
-    class="h-screen text-white main-wrapper"
-    x-data="{ showMenu: false, isMuted: false }"
+    class="h-screen overflow-hidden text-white main-wrapper"
+    x-data="{ showMenu: false, hasStarted: false, isMuted: false, videoNumber: null }"
 >
     <!-- Main Background -->
-    <div class="fixed z-0 w-full h-full bg-gradient" style="background-image: url();"></div>
+    <div class="fixed z-0 w-full h-full bg-cover bg-gradient" style="background-image: url('{{ url('/images/scene_001.png') }}');">
+        <video class="object-cover w-full h-screen" x-if="videoNumber" :src="'/videos/sceneTransition_00' + videoNumber + '-HQ.mp4'" autoplay="true" muted="true"></video>
+    </div>
 
     <!-- Stars -->
     <div class="absolute w-full h-full overflow-hidden bg-stars anim-fade-in-up" x-data>
@@ -13,7 +15,7 @@
     </div>
 
     <!-- Header -->
-    <div class="fixed z-10 w-full p-8">
+    <div class="fixed z-10 hidden w-full p-8" :class="{ 'hidden': !hasStarted }">
         <div class="flex items-center justify-between w-full">
             <div class="flex text-2xl">
                 {{ $currentScreen->title }}
@@ -27,7 +29,7 @@
     </div>
 
     <!-- Menu overlay -->
-    <div class="fixed z-50 w-full h-full bg-gradient" :class="{ 'hidden': !showMenu }">
+    <div class="fixed z-50 hidden w-full h-full bg-gradient" :class="{ 'hidden': !showMenu }">
         <div class="flex justify-end p-8 content-right">
             <a class="menu-toggle" x-on:click="showMenu = false" href="javascript:void(0);">
                 <i class="fa-solid fa-xmark"></i>
@@ -44,19 +46,19 @@
         </div>
     </div>
 
-    <!-- Current Screen Pages -->
-    <main class="fixed z-20 w-full max-h-screen overflow-y-scroll snap snap-y snap-mandatory">
-        <!-- Splash -->
-        <section class="w-full h-screen snap-start anim-splash">
-            <div class="flex items-center justify-center h-full">
-                <a href="javascript:void(0);">
-                    <img class="w-60 h-60" src="{{ url('/images/100inSpace_Identity.png') }}">
-                </a>
-            </div>
-        </section>
+    <!-- Splash -->
+    <section class="fixed z-20 w-full h-screen anim-splash" :class="{ 'hidden': hasStarted }">
+        <div class="flex items-center justify-center h-full">
+            <a href="javascript:void(0);" x-on:click="hasStarted = true; videoNumber = 1;">
+                <img class="w-60 h-60" src="{{ url('/images/100inSpace_Identity.png') }}">
+            </a>
+        </div>
+    </section>
 
+    <!-- Current Screen Pages -->
+    <main class="fixed z-20 hidden w-full max-h-screen overflow-y-scroll snap snap-y snap-mandatory" :class="{ 'hidden': !hasStarted }">
         @foreach ($currentScreen->pages as $page)
-        <section class="w-full h-screen py-20 pl-1/2 snap-start">
+        <section class="w-full h-screen py-20 ml-60 snap-start">
             <h2 class="heading outlined">
                 {{ $page->title }}
             </h2>
@@ -68,7 +70,7 @@
     </main>
 
     <!-- Footer -->
-    <div class="fixed bottom-0 z-10 w-full p-8">
+    <div class="fixed bottom-0 z-10 hidden w-full p-8" :class="{ 'hidden': !hasStarted }">
         <div class="flex items-center justify-between w-full">
             <div class="flex items-center text-2xl">
                 {{ env('APP_NAME') }}

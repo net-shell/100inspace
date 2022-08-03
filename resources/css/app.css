@@ -73,7 +73,6 @@ body {
 /*** Animations ***/
 
 .anim-splash {
-    transition: transform 1s ease-out;
     animation: fadeIn 1;
     animation-duration: 1s;
 }
