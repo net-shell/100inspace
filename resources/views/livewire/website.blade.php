@@ -17,7 +17,7 @@
     </div>
 
     <!-- Navigation Menu Overlay -->
-    <nav class="fixed z-50 hidden w-full h-full bg-gradient" :class="{ 'anim-fade-out': !showMenu, 'anim-fade-in': showMenu, 'hidden': !showMenu }">
+    <nav class="fixed z-50 hidden w-full h-full bg-cover bg-gradient" :class="{ 'anim-fade-out': !showMenu, 'anim-fade-in': showMenu, 'hidden': !showMenu }" style="background-image: url('/images/scene_001.png');">
         <div class="flex justify-end p-8 content-right">
             <a class="menu-toggle" x-on:click="showMenu = false" href="javascript:void(0);">
                 <i class="fa-solid fa-xmark"></i>
