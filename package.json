@@ -17,6 +17,7 @@
         "vite": "^2.9.11"
     },
     "dependencies": {
+        "@alpinejs/intersect": "^3.10.3",
         "animate.css": "^4.1.1"
     }
 }

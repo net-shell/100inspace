@@ -24,16 +24,19 @@ class PageResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('image'),
-                Forms\Components\RichEditor::make('text')
-                    ->required()
-                    ->columnSpan(2),
-                Forms\Components\TextInput::make('weight')
-                    ->numeric(),
                 Forms\Components\Select::make('screen_id')
                     ->relationship('screen', 'title'),
+                Forms\Components\FileUpload::make('image'),
+                Forms\Components\TextInput::make('video')
+                    ->url()
+                    ->label('YouTube Video to Embed'),
+                Forms\Components\RichEditor::make('text')
+                    ->columnSpan(2),
+                Forms\Components\TextInput::make('bg_video')
+                    ->label('Background Video File Name'),
+                Forms\Components\TextInput::make('weight')
+                    ->numeric(),
             ]);
     }
 

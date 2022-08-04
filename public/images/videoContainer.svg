@@ -1,3 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1445.354" height="857.601" viewBox="0 0 1445.354 857.601">
-  <path id="Path_8594" data-name="Path 8594" d="M2669,2247.552l1347.033,1.631,97.32-56.642-.113-755.9H3612.455l-27.813-44.062H3198.212l-30.962,44.062H2669Z" transform="translate(-2668.5 -1392.082)" fill="none" stroke="#fff" stroke-width="1"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1445.354"
+   height="857.601"
+   viewBox="0 0 1445.354 857.601"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="videoContainer.svg"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.27518624"
+     inkscape:cx="724.96357"
+     inkscape:cy="428.80051"
+     inkscape:window-width="1309"
+     inkscape:window-height="456"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3" />
+  <path
+     id="Path_8594"
+     data-name="Path 8594"
+     d="M2669,2247.552l1347.033,1.631,97.32-56.642-.113-755.9H3612.455l-27.813-44.062H3198.212l-30.962,44.062H2669Z"
+     fill="none"
+     stroke="#fff"
+     stroke-width="1"
+     transform="translate(-2668.5 -1392.082)"
+     style="fill:#00ffff" />
 </svg>

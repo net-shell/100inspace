@@ -1,11 +1,11 @@
 <div
     class="h-screen overflow-hidden text-white main-wrapper"
-    x-data="{ showMenu: false, hasStarted: false, isMuted: false, videoNumber: null }"
+    x-data="{ showMenu: false, hasStarted: false, isMuted: false, bgVideo: null }"
 >
     <!-- Main Background -->
     <div class="fixed z-0 w-full h-full bg-cover bg-gradient" style="background-image: url('/images/scene_001.png');">
-        <template x-if="videoNumber">
-            <video class="object-cover w-full h-screen" :src="'/videos/sceneTransition_00' + videoNumber + '-HQ.mp4'" autoplay="true" muted="true"></video>
+        <template x-if="bgVideo">
+            <video class="object-cover w-full h-screen" :src="'/videos/' + bgVideo" autoplay="true" muted="true"></video>
         </template>
     </div>
 
@@ -61,7 +61,14 @@
     <!-- Current Screen Pages -->
     <main class="fixed z-20 hidden w-full max-h-screen overflow-y-auto no-scrollbar snap snap-y snap-mandatory" :class="{ 'hidden': !hasStarted }">
         @foreach ($currentScreen->pages as $page)
-        <section class="relative w-full h-screen snap-start">
+        <section class="relative w-full h-screen snap-start" x-intersect="bgVideo = '{{ $page->bg_video }}'">
+            @if($page->video)
+            <div class="flex justify-center pt-16">
+                <div class="mask-video" style="-webkit-mask-image: url('{{ url('/images/videoContainer.svg') }}'); mask-image: url('{{ url('/images/videoContainer.svg') }}');">
+                    <iframe width="800" height="450" src="{{ $page->video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            @else
             <div class="absolute left-1/2 top-1/4 right-1/4 bottom-1/4">
                 @if($page->title)
                 <h1 class="heading outlined">
@@ -72,6 +79,7 @@
                     {!! html_entity_decode($page->text) !!}
                 </div>
             </div>
+            @endif
         </section>
         @endforeach
     </main>

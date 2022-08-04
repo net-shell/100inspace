@@ -9,7 +9,7 @@ class Page extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['title', 'text', 'image', 'weight', 'screen_id'];
+    protected $fillable = ['title', 'text', 'image', 'video', 'bg_video', 'weight', 'screen_id'];
 
     public function screen()
     {
