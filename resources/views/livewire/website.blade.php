@@ -1,6 +1,6 @@
 <div
     class="h-screen overflow-hidden text-white main-wrapper"
-    x-data="{ showMenu: false, hasStarted: false, isMuted: false, bgVideo: null }"
+    x-data="{ showMenu: false, hasStarted: {{ +!$showSplash }}, isMuted: false, bgVideo: null }"
 >
     <!-- Main Background -->
     <div class="fixed z-0 w-full h-full bg-cover bg-gradient" style="background-image: url('/images/scene_001.png');">
@@ -25,22 +25,22 @@
         </div>
         <div class="w-1/2 pt-20 m-auto main-menu">
             @foreach ($screens as $s => $screen)
-            <a class="block heading" href="#">
+            <a class="block heading" href="{{ route('app', ['screen' => $screen->title]) }}">
                 <span class="number">{{ $s + 1 }} | </span>
-                <span class="outlined">{{ $screen->title }}</span>
+                <span class="outlined {{ $currentScreen->id === $screen->id ? '' : 'white' }}">{{ $screen->title }}</span>
             </a>
             @endforeach
         </div>
     </nav>
 
+    @if($showSplash)
     <!-- Splash -->
-    <section class="fixed z-20 w-full h-screen anim-splash" :class="{ 'anim-splash-fade': hasStarted }">
+    <section class="fixed z-20 w-full h-screen anim-splash" :class="{ 'anim-splash-fade': hasStarted }" @click="hasStarted = true">
         <div class="flex items-center justify-center h-full">
-            <a href="javascript:void(0);" x-on:click="hasStarted = true; videoNumber = 1;">
-                <img class="w-60 h-60" src="{{ url('/images/100inSpace_Identity.png') }}">
-            </a>
+            <img class="w-60 h-60" src="{{ url('/images/100inSpace_Identity.png') }}">
         </div>
     </section>
+    @endif
 
     <!-- Header -->
     <header class="fixed z-30 hidden w-full p-8" :class="{ 'hidden': !hasStarted }">
@@ -70,12 +70,12 @@
             @else
             <div class="page-content">
                 @if($page->title)
-                <h1 class="w-1/2 m-auto mb-4 heading outlined narrow-line" id="{{ Str::slug($page->title) }}">
+                <h1 class="heading outlined narrow-line" id="{{ Str::slug($page->title) }}">
                     {{ $page->title }}
                 </h1>
                 @endif
                 <div class="content-block">
-                    {!! nl2br(html_entity_decode($page->text)) !!}
+                    &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
                 </div>
             </div>
             @endif
@@ -84,11 +84,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 z-20 hidden w-full p-8" :class="{ 'hidden': !hasStarted }">
+    <footer class="fixed bottom-0 z-20 hidden w-full p-8 sm:pb-2" :class="{ 'hidden': !hasStarted }">
         <div class="flex items-center justify-between">
-            <div class="flex items-center text-2xl">
-                {{ env('APP_NAME') }}
-            </div>
             <div class="flex items-center justify-center">
                 <span>Powered by</span>
                 <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">

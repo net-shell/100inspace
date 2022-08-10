@@ -67,22 +67,33 @@ body {
     font-size: 1.8em;
 }
 
+.main-menu .number {
+    font-size: .7em;
+    vertical-align: middle;
+}
+
 .heading {
     font-family: Ubuntu, Arial, sans-serif;
     font-weight: 900;
     font-size: 50px;
     text-transform: uppercase;
     text-align: center;
+    overflow-wrap: break-word;
 }
 
-.narrow-line {
-    line-height: .9;
+.heading.narrow-line {
+    line-height: 1;
+    margin: 0 auto .5em auto;
 }
 
 .outlined {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-color: #c57e5b;
     -webkit-text-stroke-width: 1px;
+}
+
+.outlined.white {
+    -webkit-text-stroke-color: rgba(255, 255, 255, .5);
 }
 
 .mask-video {
@@ -93,10 +104,18 @@ body {
 }
 
 .page-content {
-    margin-left: 40vw;
-    margin-right: 10rem;
+    margin-left: 50vw;
+    margin-right: 20vw;
     padding-top: 30vh;
-    padding-bottom: 90vh;
+    padding-bottom: 80vh;
+}
+
+/*** Responsive ***/
+
+@media all and (max-width: 768px) {
+    .page-content {
+        margin-left: 10vw;
+    }
 }
 
 /*** Animations ***/
