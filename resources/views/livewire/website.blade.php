@@ -45,10 +45,10 @@
     <!-- Header -->
     <header class="fixed z-30 hidden w-full p-8" :class="{ 'hidden': !hasStarted }">
         <div class="flex items-center justify-between w-full">
-            <div class="flex items-center text-2xl">
+            <a class="flex items-center text-2xl" href="{{ route('app') }}">
                 <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
                 <span>{{ env('APP_NAME') }}</span>
-            </div>
+            </a>
             <div class="flex justify-end content-right">
                 <a class="menu-toggle" href="javascript:void(0);" x-on:click="showMenu = true">
                     <i class="fa-solid fa-bars"></i>
@@ -58,7 +58,7 @@
     </header>
 
     <!-- Current Screen Pages -->
-    <main class="fixed z-20 w-full h-screen overflow-y-auto no-scrollbar snap snap-y snap-mandatory" x-show="hasStarted">
+    <main class="fixed z-20 w-full h-screen overflow-y-auto no-scrollbar snap snap-y snap-mandatory" x-show="hasStarted" x-transition:enter="anim-fade-in">
         @foreach ($currentScreen->pages as $page)
         <section class="w-full min-h-screen snap-start" x-intersect:full="bgVideo = '{{ $page->bg_video }}'">
             @if($page->video)
