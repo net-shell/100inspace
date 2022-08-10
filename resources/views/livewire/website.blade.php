@@ -58,13 +58,13 @@
     </header>
 
     <!-- Current Screen Pages -->
-    <main class="fixed z-20 hidden w-full h-screen overflow-y-auto no-scrollbar snap snap-y snap-mandatory" :class="{ 'hidden': !hasStarted }">
+    <main class="fixed z-20 w-full h-screen overflow-y-auto no-scrollbar snap snap-y snap-mandatory" x-show="hasStarted">
         @foreach ($currentScreen->pages as $page)
         <section class="w-full min-h-screen snap-start" x-intersect:full="bgVideo = '{{ $page->bg_video }}'">
             @if($page->video)
-            <div class="flex justify-center pt-16">
-                <div class="mask-video" style="-webkit-mask-image: url('{{ url('/images/videoContainer.svg') }}'); mask-image: url('{{ url('/images/videoContainer.svg') }}');">
-                    <iframe width="800" height="450" src="{{ $page->video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="flex justify-center pt-20">
+                <div class="w-11/12 mask-video sm:w-1/2" style="-webkit-mask-image: url('{{ url('/images/videoContainer.svg') }}'); mask-image: url('{{ url('/images/videoContainer.svg') }}');">
+                    <iframe class="w-full" src="{{ $page->video }}" style="aspect-ratio: 16 / 9;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             @else
