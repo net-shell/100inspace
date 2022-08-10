@@ -58,29 +58,27 @@
     </header>
 
     <!-- Current Screen Pages -->
-    <main class="fixed z-20 hidden w-full max-h-screen overflow-y-auto no-scrollbar snap snap-y snap-mandatory" :class="{ 'hidden': !hasStarted }">
+    <main class="fixed z-20 hidden w-full h-screen overflow-y-auto no-scrollbar snap snap-y snap-mandatory" :class="{ 'hidden': !hasStarted }">
         @foreach ($currentScreen->pages as $page)
-        <section class="relative w-full h-screen snap-start">
-            <div x-intersect:full="bgVideo = '{{ $page->bg_video }}'">
-                @if($page->video)
-                <div class="flex justify-center pt-16">
-                    <div class="mask-video" style="-webkit-mask-image: url('{{ url('/images/videoContainer.svg') }}'); mask-image: url('{{ url('/images/videoContainer.svg') }}');">
-                        <iframe width="800" height="450" src="{{ $page->video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+        <section class="w-full min-h-screen snap-start" x-intersect:full="bgVideo = '{{ $page->bg_video }}'">
+            @if($page->video)
+            <div class="flex justify-center pt-16">
+                <div class="mask-video" style="-webkit-mask-image: url('{{ url('/images/videoContainer.svg') }}'); mask-image: url('{{ url('/images/videoContainer.svg') }}');">
+                    <iframe width="800" height="450" src="{{ $page->video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                @else
-                <div class="absolute left-1/2 top-1/4 right-1/4 bottom-1/4">
-                    @if($page->title)
-                    <h1 class="heading outlined">
-                        {{ $page->title }}
-                    </h1>
-                    @endif
-                    <div class="content-block">
-                        {!! html_entity_decode($page->text) !!}
-                    </div>
-                </div>
-                @endif
             </div>
+            @else
+            <div class="page-content">
+                @if($page->title)
+                <h1 class="w-1/2 m-auto mb-4 heading outlined narrow-line" id="{{ Str::slug($page->title) }}">
+                    {{ $page->title }}
+                </h1>
+                @endif
+                <div class="content-block">
+                    {!! nl2br(html_entity_decode($page->text)) !!}
+                </div>
+            </div>
+            @endif
         </section>
         @endforeach
     </main>
