@@ -10,14 +10,14 @@
     </div>
 
     <!-- Stars -->
-    <div class="absolute w-full h-full overflow-hidden bg-stars anim-fade-in" x-data>
+    <div class="absolute z-30 overflow-hidden bg-stars anim-fade-in" x-data>
         <template x-for="s in 100">
             <i x-bind:style="{ top: Math.floor(Math.random() * window.innerHeight) + 'px', left: Math.floor(Math.random() * window.innerWidth) + 'px', 'font-size': Math.floor(Math.random() * 12) + 24 + 'px' }">.</i>
         </template>
     </div>
 
     <!-- Navigation Menu Overlay -->
-    <nav class="fixed z-50 hidden w-full h-full bg-cover bg-gradient" :class="{ 'anim-fade-out': !showMenu, 'anim-fade-in': showMenu, 'hidden': !showMenu }" style="background-image: url('/images/scene_001.png');">
+    <nav class="fixed z-50 w-full h-full bg-cover bg-gradient" x-show="showMenu" x-transition:enter="anim-fade-in" x-transition:leave="anim-fade-out" style="background-image: url('/images/scene_001.png');">
         <div class="flex justify-end p-8 content-right">
             <a class="menu-toggle" x-on:click="showMenu = false" href="javascript:void(0);">
                 <i class="fa-solid fa-xmark"></i>
@@ -35,7 +35,7 @@
 
     @if($showSplash)
     <!-- Splash -->
-    <section class="fixed z-20 w-full h-screen anim-splash" :class="{ 'anim-splash-fade': hasStarted }" @click="hasStarted = true">
+    <section class="fixed z-40 w-full h-screen anim-splash" x-transition:enter="anim-splash-fade" x-show="!hasStarted" @click="hasStarted = true">
         <div class="flex items-center justify-center h-full">
             <img class="w-60 h-60" src="{{ url('/images/100inSpace_Identity.png') }}">
         </div>

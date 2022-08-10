@@ -69,7 +69,8 @@ body {
 
 .main-menu .number {
     font-size: .7em;
-    vertical-align: middle;
+    vertical-align: top;
+    line-height: 2.1;
 }
 
 .heading {
