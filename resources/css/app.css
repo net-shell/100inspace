@@ -99,7 +99,7 @@ body {
 .outlined {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-color: #c57e5b;
-    -webkit-text-stroke-width: .1px;
+    -webkit-text-stroke-width: 1px;
 }
 
 .outlined.white {
