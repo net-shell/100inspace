@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="1445.354"
-   height="857.601"
    viewBox="0 0 1445.354 857.601"
    version="1.1"
    id="svg3"
    sodipodi:docname="videoContainer.svg"
    inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   preserveAspectRatio="none"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +23,7 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="0.27518624"
-     inkscape:cx="724.96357"
+     inkscape:cx="726.78053"
      inkscape:cy="428.80051"
      inkscape:window-width="1309"
      inkscape:window-height="456"
@@ -40,5 +39,5 @@
      stroke="#fff"
      stroke-width="1"
      transform="translate(-2668.5 -1392.082)"
-     style="fill:#00ffff" />
+     style="fill:none;stroke:#ffffff" />
 </svg>

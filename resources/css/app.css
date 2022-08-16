@@ -35,7 +35,18 @@
     display: none !important;
 }
 
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+
 /*** Website Styles ***/
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: 'Source Sans Pro', Arial, sans-serif;
@@ -63,7 +74,7 @@ body {
 }
 
 .menu-toggle {
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 
 .main-menu .number {
@@ -78,17 +89,11 @@ body {
     font-weight: 900;
     font-size: 50px;
     text-transform: uppercase;
-    text-align: center;
     overflow-wrap: break-word;
 }
 
 .accent {
     color: #c57e5b;
-}
-
-.heading.narrow-line {
-    line-height: 1;
-    margin: 0 auto .5em auto;
 }
 
 .outlined {
@@ -115,6 +120,12 @@ body {
     padding-bottom: 80vh;
 }
 
+.bg-line {
+    background-size: 1px 100%;
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
 /*** Responsive ***/
 
 @media all and (max-width: 768px) {
@@ -124,6 +135,7 @@ body {
 
     .page-content {
         margin-left: 10vw;
+        margin-right: 10vw;
     }
 }
 
@@ -145,6 +157,11 @@ body {
 .anim-fade-in {
     animation: fadeIn 1;
     animation-duration: 1.5s;
+}
+
+.anim-fade-in-slow {
+    animation: fadeIn 1;
+    animation-duration: 2.5s;
 }
 
 .anim-fade-out {

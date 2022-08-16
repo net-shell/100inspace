@@ -9,6 +9,8 @@ use Route;
 class Website extends Component
 {
     public $currentScreen;
+    public $prevScreen;
+    public $nextScreen;
     public $screens;
     public $showSplash;
 
@@ -17,6 +19,9 @@ class Website extends Component
         $screen = Route::current()->parameter('screen');
         $this->currentScreen = $screen ? Screen::whereTitle($screen)->first() : Screen::first();
         $this->screens = Screen::all();
+
+        $this->prevScreen = $this->screens->find($this->currentScreen->id - 1);
+        $this->nextScreen = $this->screens->find($this->currentScreen->id + 1);
 
         $this->showSplash = $this->currentScreen->id === $this->screens->first()->id;
     }
