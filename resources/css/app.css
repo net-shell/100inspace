@@ -35,13 +35,6 @@
     display: none !important;
 }
 
-.truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    overflow-wrap: break-word;
-    text-overflow: ellipsis;
-}
-
 /*** Website Styles ***/
 
 html {
@@ -117,13 +110,17 @@ body {
     margin-left: 50vw;
     margin-right: 20vw;
     padding-top: 20vh;
-    padding-bottom: 80vh;
+    padding-bottom: 50vh;
+}
+
+.video-content {
+    padding-bottom: 50vh;
 }
 
 .bg-line {
     background-size: 1px 100%;
     background-repeat: no-repeat;
-    background-position: right 1rem center;
+    background-position: right 2rem center;
 }
 
 /*** Responsive ***/
@@ -131,6 +128,10 @@ body {
 @media all and (max-width: 768px) {
     .main-menu .heading {
         font-size: 2.4em;
+    }
+
+    .bg-video {
+        object-position: 25% 50%;
     }
 
     .page-content {
@@ -141,7 +142,7 @@ body {
 
 /*** Animations ***/
 
-.anim-splash-logo:hover {
+.anim-splash-logo:hover:not(.anim-splash-fade) {
     animation: flip;
     animation-duration: 1.5s;
 }
