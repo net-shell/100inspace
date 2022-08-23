@@ -4,30 +4,14 @@
         showMenu: false,
         page: 0,
         bgVideo: null,
-        bgDuration: 0,
         scrolled: 0,
         splashFade: false,
-        get videoEnd() { return this.scrolled * this.bgDuration; },
         changeScroll() {
             let el = document.getElementById('page' + this.page);
             if (!el) return;
-
             const top = parseInt(window.getComputedStyle(el.firstElementChild).getPropertyValue('padding-top'));
             const bottom = parseInt(window.getComputedStyle(el.firstElementChild).getPropertyValue('padding-bottom'));
             this.scrolled = -(el.getBoundingClientRect().top - top) / (el.offsetHeight - bottom);
-
-            if (!$refs.bgvideo) return;
-
-            if ($refs.bgvideo.currentTime > this.videoEnd) {
-                $refs.bgvideo.currentTime = this.videoEnd;
-            } else {
-                $refs.bgvideo.play();
-            }
-        },
-        onVideoProgress() {
-            if ($refs.bgvideo && $refs.bgvideo.currentTime >= this.videoEnd) {
-                $refs.bgvideo.pause();
-            }
         }
     }"
 >
@@ -38,8 +22,7 @@
                 x-ref="bgvideo"
                 class="object-cover w-full h-screen bg-video"
                 :src="'/videos/' + bgVideo"
-                @durationchange="bgDuration = $event.target.duration"
-                @timeupdate="onVideoProgress"
+                autoplay
                 muted="true">
             </video>
             <div class="hidden">
@@ -151,7 +134,7 @@
                     {{ $page->title }}
                 </h1>
                 @endif
-                <div class="p-4 leading-tight rounded-md shadow-lg backdrop-blur-md content-block shadow-black/25 bg-black/20">
+                <div class="leading-tight shadow-sm content-block shadow-black">
                     &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
                 </div>
             </div>
