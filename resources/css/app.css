@@ -123,6 +123,10 @@ body {
     background-position: right 2rem center;
 }
 
+.content-block {
+    text-shadow: 2px 2px #000;
+}
+
 /*** Responsive ***/
 
 @media all and (max-width: 768px) {

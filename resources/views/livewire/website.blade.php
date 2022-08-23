@@ -134,7 +134,7 @@
                     {{ $page->title }}
                 </h1>
                 @endif
-                <div class="leading-tight shadow-sm content-block shadow-black">
+                <div class="leading-tight shadow-sm content-block">
                     &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
                 </div>
             </div>
@@ -144,7 +144,7 @@
     </main>
 
     <!-- Scrollbar Navigation -->
-    @if (count($currentScreen->pages))
+    @if (count($currentScreen->pages) && $currentScreen->id != $screens->first()->id)
     <aside class="fixed z-20 hidden w-40 overflow-x-visible overflow-y-auto right-8 top-24 bottom-24 sm:block anim-fade-in-slow no-scrollbar" x-show="!!page" x-cloak>
         <div class="flex items-center justify-center h-full bg-line" style="background-image: url(/images/dim_line.svg);">
             <div class="grid gap-8 pr-8">
