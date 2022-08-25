@@ -145,7 +145,7 @@
 
     <!-- Scrollbar Navigation -->
     @if (count($currentScreen->pages) && $currentScreen->id != $screens->first()->id)
-    <aside class="fixed z-20 hidden w-40 overflow-x-visible overflow-y-auto right-8 top-24 bottom-24 sm:block anim-fade-in-slow no-scrollbar" x-show="!!page" x-cloak>
+    <aside class="fixed z-20 hidden overflow-x-visible overflow-y-auto w-50 right-8 top-24 bottom-24 sm:block anim-fade-in-slow no-scrollbar" x-show="!!page" x-cloak>
         <div class="flex items-center justify-center h-full bg-line" style="background-image: url(/images/dim_line.svg);">
             <div class="grid gap-8 pr-8">
             @foreach ($currentScreen->pages as $p => $page)
