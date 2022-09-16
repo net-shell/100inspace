@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Builder;
 
 class Screen extends Model
 {
@@ -12,5 +12,13 @@ class Screen extends Model
     public function pages()
     {
         return $this->hasMany(Page::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('weight', 'asc');
+        });
     }
 }

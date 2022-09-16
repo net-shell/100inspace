@@ -40,7 +40,7 @@
                 <span>{{ env('APP_NAME') }}</span>
             </a>
             <div class="flex items-center">
-                <a href="#" class="px-4 py-2 mr-4 border text-orange-500 border-orange-500 hover:text-orange-300 hover:border-orange-300 transition-colors">
+                <a href="{{ env('SUBSCRIBE_URL') }}" class="px-4 py-2 mr-4 border text-orange-400 border-orange-400 hover:text-orange-300 hover:border-orange-300 transition-colors">
                     SUBSCRIBE
                 </a>
                 <a class="menu-toggles p-2" x-on:click="showMenu = false" href="javascript:void(0);">
@@ -87,6 +87,9 @@
                 @endif
             </div>
             <div class="flex justify-end content-right">
+                <a href="{{ env('SUBSCRIBE_URL') }}" class="hidden sm:block px-4 py-2 mr-4 border text-orange-400 border-orange-400 hover:text-orange-300 hover:border-orange-300 transition-colors">
+                    SUBSCRIBE
+                </a>
                 <a class="menu-toggle" href="javascript:void(0);" x-on:click="showMenu = true">
                     <i class="fa-solid fa-bars"></i>
                 </a>
@@ -122,6 +125,13 @@
                     {{ $page->title }}
                 </h1>
                 @endif
+    
+                @if($page->image)
+                <div class="sm:fixed sm:top-32 sm:left-8 page-gallery p-8" x-show="page == {{ $p + 1 }}" x-transition x-cloak>
+                    <img class="main-image transition-transform" src="{{ url('/images/content/' . $page->image) }}">
+                </div>
+                @endif
+                
                 <div class="leading-tight shadow-sm content-block">
                     &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
                 </div>

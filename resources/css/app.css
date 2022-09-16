@@ -107,10 +107,22 @@ body {
 }
 
 .page-content {
-    margin-left: 50vw;
+    margin-left: 40vw;
     margin-right: 20vw;
     padding-top: 20vh;
     padding-bottom: 50vh;
+}
+
+.page-gallery {
+    width: 30vw;
+}
+
+.page-gallery .main-image {
+    transform: perspective(400px) rotateY(10deg);
+}
+
+.page-gallery .main-image:hover {
+    transform: scale(1.5) perspective(400px) rotateY(-10deg);
 }
 
 .video-content {
@@ -145,6 +157,10 @@ body {
     .page-content {
         margin-left: 10vw;
         margin-right: 10vw;
+    }
+    
+    .page-gallery {
+        width: 100%;
     }
 }
 
