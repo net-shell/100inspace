@@ -168,16 +168,19 @@
 
     <!-- Footer -->
     <footer class="fixed bottom-0 z-20 w-full p-8">
-        <div class="grid grid-cols-3 justify-items-stretch">
+        <div class="grid grid-cols-3 justify-items-stretch items-center">
             <div>
                 @if ($prevScreen)
-                <a class="transition-opacity duration-500 opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => $prevScreen->slug]) }}">
+                <a class="inline sm:block transition-opacity duration-500 opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => $prevScreen->slug]) }}">
                     <img class="inline-block w-4 h-4 rotate-180" src="{{ url('/images/arrow.svg') }}">
                     <span class="hidden ml-2 sm:inline">
                         {{ $prevScreen->title }}
                     </span>
                 </a>
                 @endif
+                <small class="inline sm:block opacity-50">
+                    © 2022 ENPULSION GmbH. All rights reserved.
+                </small>
             </div>
             <div class="flex items-center justify-center">
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
@@ -192,6 +195,11 @@
                     <img class="inline-block w-4 h-4" src="{{ url('/images/arrow.svg') }}">
                 </a>
                 @endif
+                <small class="block">
+                    <a class="opacity-50 hover:opacity-100" href="https://www.enpulsion.com/imprint/" target="_blank">
+                        Imprint
+                    </a>
+                </small>
             </div>
         </div>
     </footer>
