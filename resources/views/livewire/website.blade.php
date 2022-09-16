@@ -127,7 +127,7 @@
                 @endif
     
                 @if($page->image)
-                <div class="sm:fixed sm:top-32 sm:left-8 page-gallery p-8" x-show="page == {{ $p + 1 }}" x-transition x-cloak>
+                <div class="sm:fixed sm:top-32 sm:left-8 page-gallery p-8" x-show="page == {{ $p + 1 }}" x-transition.opacity x-cloak>
                     <img class="main-image transition-transform" src="{{ url('/images/content/' . $page->image) }}">
                 </div>
                 @endif
