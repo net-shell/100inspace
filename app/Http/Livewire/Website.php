@@ -17,7 +17,7 @@ class Website extends Component
     public function mount()
     {
         $screen = Route::current()->parameter('screen');
-        $this->currentScreen = $screen ? Screen::whereTitle($screen)->first() : Screen::first();
+        $this->currentScreen = $screen ? Screen::whereSlug($screen)->first() : Screen::first();
         $this->screens = Screen::all();
 
         $this->prevScreen = $this->screens->find($this->currentScreen->id - 1);

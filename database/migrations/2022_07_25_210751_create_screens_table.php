@@ -10,6 +10,8 @@ class CreateScreensTable extends Migration {
 		Schema::create('screens', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('title', 255);
+			$table->string('slug', 255);
+			$table->integer('weight')->nullable();
 		});
 	}
 

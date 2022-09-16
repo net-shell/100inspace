@@ -1,6 +1,4 @@
-<div
-    class="h-screen overflow-hidden text-white main-wrapper"
-    x-data="{
+<div class="h-screen overflow-hidden text-white main-wrapper" x-data="{
         showMenu: false,
         page: 0,
         bgVideo: null,
@@ -13,17 +11,11 @@
             const bottom = parseInt(window.getComputedStyle(el.firstElementChild).getPropertyValue('padding-bottom'));
             this.scrolled = -(el.getBoundingClientRect().top - top) / (el.offsetHeight - bottom);
         }
-    }"
->
+    }">
     <!-- Background -->
     <div class="fixed z-0 w-full h-full bg-cover" style="background-image: url('/images/scene_001.png');">
         <template x-if="bgVideo">
-            <video
-                x-ref="bgvideo"
-                class="object-cover w-full h-screen bg-video"
-                :src="'/videos/' + bgVideo"
-                autoplay
-                muted="true">
+            <video x-ref="bgvideo" class="object-cover w-full h-screen bg-video" :src="'/videos/' + bgVideo" autoplay muted="true">
             </video>
             <div class="hidden">
                 @foreach ($currentScreen->pages as $page)
@@ -43,18 +35,23 @@
     <!-- Menu Overlay -->
     <nav class="fixed z-50 w-full h-screen bg-cover" x-cloak x-show="showMenu" x-transition:enter="anim-fade-in" x-transition:leave="anim-fade-out" style="background-image: url('/images/scene_001.png');">
         <div class="fixed flex justify-between w-full p-8">
-            <a class="flex items-center text-2xl" href="{{ route('app') }}">
+            <a class="flex items-center text-xl" href="{{ route('app') }}">
                 <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
                 <span>{{ env('APP_NAME') }}</span>
             </a>
-            <a class="menu-toggle" x-on:click="showMenu = false" href="javascript:void(0);">
-                <i class="fa-solid fa-xmark"></i>
-            </a>
+            <div class="flex items-center">
+                <a href="#" class="px-4 py-2 mr-4 border text-orange-500 border-orange-500 hover:text-orange-300 hover:border-orange-300 transition-colors">
+                    SUBSCRIBE
+                </a>
+                <a class="menu-toggles p-2" x-on:click="showMenu = false" href="javascript:void(0);">
+                    <i class="fa-solid fa-xmark"></i>
+                </a>
+            </div>
         </div>
         <div class="flex items-center justify-center h-full main-menu">
             <div>
                 @foreach ($screens as $s => $screen)
-                <a class="block heading" href="{{ route('app', ['screen' => $screen->title]) }}">
+                <a class="block heading" href="{{ route('app', ['screen' => $screen->slug]) }}">
                     <span class="number">{{ $s + 1 }} | </span>
                     <span class="{{ $currentScreen->id === $screen->id ? 'accent' : 'outlined white' }}">{{ $screen->title }}</span>
                 </a>
@@ -76,10 +73,19 @@
     <!-- Header -->
     <header class="fixed z-30 w-full p-8">
         <div class="flex items-center justify-between w-full">
-            <a class="flex items-center text-2xl" href="{{ route('app') }}">
-                <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
-                <span>{{ env('APP_NAME') }}</span>
-            </a>
+            <div class="flex items-center">
+                <a class="flex items-center" href="{{ route('app') }}">
+                    <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
+                    <span class="text-xl opacity-50 hover:opacity-100 transition-opacity border-r border-white pr-2">
+                        {{ env('APP_NAME') }}
+                    </span>
+                </a>
+                @if (!$showSplash)
+                <span class="ml-2 opacity-50">
+                    {{ $currentScreen->title }}
+                </span>
+                @endif
+            </div>
             <div class="flex justify-end content-right">
                 <a class="menu-toggle" href="javascript:void(0);" x-on:click="showMenu = true">
                     <i class="fa-solid fa-bars"></i>
@@ -92,33 +98,15 @@
     <main x-ref="pages" @scroll.throttle="changeScroll" class="fixed z-20 w-full overflow-y-auto top-24 bottom-24 no-scrollbar snap snap-y snap-mandatory anim-page-in">
         @if ($showSplash)
         <!-- Splash -->
-        <section
-            id="page0"
-            class="w-full h-full mb-64 snap-start"
-            :class="{ 'anim-fade-in-slow': page === 0 && scrolled }"
-            x-intersect="page = 0; bgVideo = '';"
-            @click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });"
-        >
+        <section id="page0" class="w-full h-full mb-64 snap-start" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" @click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
             <div class="flex items-center justify-center h-full">
-                <img
-                    class="w-60 h-60 anim-splash-logo animate__infinite"
-                    :class="{ 'anim-splash-fade': (page === 0 && scrolled > 0.375) || splashFade }"
-                    src="{{ url('/images/100inSpace_Identity.png') }}"
-                >
+                <img class="w-60 h-60 anim-splash-logo animate__infinite" :class="{ 'anim-splash-fade': (page === 0 && scrolled > 0.375) || splashFade }" src="{{ url('/images/100inSpace_Identity.png') }}">
             </div>
         </section>
         @endif
         <!-- Screen Pages -->
         @foreach ($currentScreen->pages as $p => $page)
-        <section
-            id="page{{ $p + 1 }}"
-            class="w-full min-h-screen snap-start"
-            :class="{ 'anim-fade-in-slow': visible }"
-            x-data="{ visible: false, viewed: 0 }"
-            x-intersect="bgVideo = '{{ $page->bg_video }}'"
-            x-intersect:enter="visible = true; page = {{ $p + 1 }};"
-            x-intersect:leave="visible = false"
-        >
+        <section id="page{{ $p + 1 }}" class="w-full min-h-screen snap-start" :class="{ 'anim-fade-in-slow': visible }" x-data="{ visible: false, viewed: 0 }" x-intersect="bgVideo = '{{ $page->bg_video }}'" x-intersect:enter="visible = true; page = {{ $p + 1 }};" x-intersect:leave="visible = false">
             @if($page->video)
             <div class="flex justify-center video-content">
                 <div class="w-10/12 bg-no-repeat bg-contain sm:w-3/4" style="background-image: url('/images/videoContainer.svg');">
@@ -148,7 +136,7 @@
     <aside class="fixed z-20 hidden overflow-x-visible overflow-y-auto w-50 right-8 top-24 bottom-24 sm:block anim-fade-in-slow no-scrollbar" x-show="!!page" x-cloak>
         <div class="flex items-center justify-center h-full bg-line" style="background-image: url(/images/dim_line.svg);">
             <div class="grid gap-8 pr-8">
-            @foreach ($currentScreen->pages as $p => $page)
+                @foreach ($currentScreen->pages as $p => $page)
                 <a href="#page{{ $p + 1 }}" x-data="{ get isActive() { return page === {{ $p + 1 }}; } }">
                     <div class="flex items-center justify-end">
                         <div class="flex-none w-32 p-1 pr-2 text-xs text-right capitalize transition-opacity duration-500 opacity-50 hover:opacity-100" :class="{ 'opacity-100': isActive }">
@@ -162,7 +150,7 @@
                         </div>
                     </div>
                 </a>
-            @endforeach
+                @endforeach
             </div>
         </div>
     </aside>
@@ -173,7 +161,7 @@
         <div class="grid grid-cols-3 justify-items-stretch">
             <div>
                 @if ($prevScreen)
-                <a class="transition-opacity duration-500 opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => $prevScreen->title]) }}">
+                <a class="transition-opacity duration-500 opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => $prevScreen->slug]) }}">
                     <img class="inline-block w-4 h-4 rotate-180" src="{{ url('/images/arrow.svg') }}">
                     <span class="hidden ml-2 sm:inline">
                         {{ $prevScreen->title }}
@@ -186,14 +174,11 @@
                 <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
             </div>
             <div class="text-right">
-                <span class="hidden mr-2 sm:inline">
-                    {{ $currentScreen->title }}
-                </span>
                 @if ($nextScreen)
-                <a class="transition-opacity duration-500 opacity-50 hover:opacity-100"
-                    href="{{ route('app', ['screen' => $nextScreen->title]) }}"
-                    @click="splashFade = true"
-                >
+                <a class="transition-opacity duration-500 opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => $nextScreen->slug]) }}" @click="splashFade = true">
+                    <span class="hidden mr-2 sm:inline">
+                        {{ $nextScreen->title }}
+                    </span>
                     <img class="inline-block w-4 h-4" src="{{ url('/images/arrow.svg') }}">
                 </a>
                 @endif
