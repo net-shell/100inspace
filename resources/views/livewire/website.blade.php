@@ -15,8 +15,9 @@
     }">
     <!-- Background -->
     <div class="fixed z-0 w-full h-full bg-cover" style="background-image: url('/images/scene_001.png');">
-        <div x-if="bgImage" :style="{ 'background-image': 'url(/images/content/' + bgImage + ')' }" class="w-full h-full bg-left-bottom bg-no-repeat bg-contain">
-        </div>
+        <template x-if="bgImage">
+            <div :style="{ 'background-image': 'url(/images/content/' + bgImage + ')' }" class="w-full h-full bg-left-bottom bg-no-repeat bg-contain"></div>
+        </template>
         <template x-if="bgVideo">
             <video x-ref="bgvideo" class="object-cover w-full h-screen bg-video" :src="'/videos/' + bgVideo" autoplay muted="true">
             </video>
