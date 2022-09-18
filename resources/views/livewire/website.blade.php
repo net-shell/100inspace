@@ -195,7 +195,7 @@
     @endif
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 z-20 w-full p-8">
+    <footer class="fixed bottom-0 z-20 w-full p-8 pb-4">
         <div class="grid items-center grid-cols-3 justify-items-stretch">
             <div>
                 @if ($prevScreen)
