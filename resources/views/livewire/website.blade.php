@@ -1,6 +1,7 @@
 <div class="h-screen overflow-hidden text-white main-wrapper" x-data="{
         showMenu: false,
         page: 0,
+        bgImage: null,
         bgVideo: null,
         scrolled: 0,
         splashFade: false,
@@ -14,6 +15,8 @@
     }">
     <!-- Background -->
     <div class="fixed z-0 w-full h-full bg-cover" style="background-image: url('/images/scene_001.png');">
+        <div x-if="bgImage" :style="{ 'background-image': 'url(/images/content/' + bgImage + ')' }" class="w-full h-full bg-left-bottom bg-no-repeat bg-contain">
+        </div>
         <template x-if="bgVideo">
             <video x-ref="bgvideo" class="object-cover w-full h-screen bg-video" :src="'/videos/' + bgVideo" autoplay muted="true">
             </video>
@@ -123,7 +126,7 @@
         @endif
         <!-- Screen Pages -->
         @foreach ($currentScreen->pages as $p => $page)
-        <section id="page{{ $p + 1 }}" class="w-full min-h-screen snap-start" :class="{ 'anim-fade-in-slow': visible }" x-data="{ visible: false, viewed: 0 }" x-intersect="bgVideo = '{{ $page->bg_video }}'" x-intersect:enter="visible = true; page = {{ $p + 1 }};" x-intersect:leave="visible = false">
+        <section id="page{{ $p + 1 }}" class="w-full min-h-screen snap-start" :class="{ 'anim-fade-in-slow': visible }" x-data="{ visible: false, viewed: 0 }" x-intersect="bgVideo = '{{ $page->bg_video }}'; bgImage = '{{ $page->bg_image }}'" x-intersect:enter="visible = true; page = {{ $p + 1 }};" x-intersect:leave="visible = false">
             @if($page->video)
             <div class="flex justify-center video-content">
                 <div class="w-10/12 bg-no-repeat bg-contain sm:w-3/4" style="background-image: url('/images/videoContainer.svg');">

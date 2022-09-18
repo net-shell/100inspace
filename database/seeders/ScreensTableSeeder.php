@@ -108,32 +108,34 @@ It is commonly accepted that industrial revolution brought profound change for h
         // Future
         $this->addScreen('THE FUTURE', [
             'MEET THE FUTURE' => [
-                'text' => "Meet the future. Since the beginning of our second millennium, we observed the Universe like we never had before. Scientific hypotheses turned into theories, and got proven al
-Anna is the personification of the future ENPULSION believes in.",
+                'text' => "Today's innovations show us what the future will look like. Investor interest in interplanetary travel has never been greater, and our radius of action in the zero-gravity environment is expected to expand from the most distant celestial objects to the lowest orbits. For these reasons, many space enthusiasts anticipate another period of extensive innovation that will usher in a new wave of breakthrough technologies for the benefit of humanity.
+All these new applications have the potential to significantly accelerate the commercialization of spaceflight. However, they would not be possible without the use of flight-proven electric propulsions. These thrusters are a real game changer as the near-Earth economy enters a new era. They are the foundation for the ongoing fourth industrial revolution in the space economy and are accelerating our path to the future.",
                 'image' => 'Asset_Girl1.png',
             ],
             'MEET ANNA' => [
-                'text' => "Let us introduce you to Anna. She is 12, just a teenager. Her relationship to outer space is very different than her elders. She heard about aerospace engineering and artificial intelligence since kindergarten. In her present, our future, looks like what we envisioned, maybe with a few setbacks along the way.
-Anna’s grandfathers and grandmothers probably sticked to their televisions, watching in amazement as a human stepped on the moon for the first time. That 1969 landing is one of the greatest achievements not only of that decade, but of humankind.
-But now the year is 2023, Anna has just turned 13 and is beginning a school project for lunar satellites.",
+                'text' => "When she first meets Alexander, the creator and CEO of ENPULSION, in the Vienna Technical Museum in 2022, Anna is a pioneering 12-year-old. She begins by asking him about the fancy tiny thruster that was on show there as well as space flight in general, and she quickly becomes thrilled about the subject. This enthusiasm fuels her steadfast determination to become an astronaut and won't fade in the years to come. Anna is the future, and you may watch her succeed through her greatest milestones as she realizes her goals and transforms into who she is. Help Anna find her destiny while learning about a possible vision for our own future.",
                 'image' => 'Asset_Girl2.png',
             ],
             'MOON ROCKS!' => [
-                'text' => "In late 2024, when Anna is just 14 years old, Lunar Gateway has already been built — a small yet important space station in the Moon’s orbit, which will play a pivotal role to scientific research and communication.
-The Earth rise on the Moon, here is nothing in the Universe that is quite like it.
-Anna imagines herself among those astronauts who will one day visit Lunar Gateway, and her interests in physics and futurology become as big as a whole planet.",
-                'image' => 'Asset_Moon.png',
+                'text' => "<b>2023</b>  While the Lunar Net is being developed and the lunar constellations for a sort of \"Internet of the Moon\" are being gradually constructed, 13-year-old Anna, with much enthusiasm, undertakes a somewhat ambitious school project on the subject of \"lunar satellites\", something she and her classmates are working on for days and weeks. She still dreams constantly of being an astronaut on the moon accompanied by her dog, of course.
+<b>2024</b>  Lunar Gateway, a small but crucial space station in the Moon's orbit, has already been constructed by late 2024, when Anna just turns 14 years old. Lunar Gateway will be essential to spectacular space expeditions, ground-breaking scientific research, and the flourishing near-Earth economy. Anna is inspired to explore all books available of space travel, futurology, visioneering, and physics. Clearly, Anna is full of questions about everything space-related and does not stop asking until she is properly informed…",
+                'bg_image' => 'Asset_MoonRocks.png',
             ],
             'MARS MISSION' => [
-                'text' => "The year is 2026, Anna is already 16 years old and has just realized that the basis of her dreams in space is the ability to move around in it.
-With great zeal and thirst for knowledge, Anna throws herself into the latest findings about ion drives and their fantastic possibilities. At the same time, Anna finds the upcoming Mars missions terribly exciting, just imagine: Humans setting foot on the Red Planet for the first time! Propulsion systems are becoming more and more interesting to Anna, so she sends an e-mail to ENPULSION asking if she can start an internship. The future can begin…",
+                'text' => "<b>2026</b>  Anna, who is now 16 years old, is even more excited about space-related topics as a result of the ongoing Mission to Mars. To complete her internship, she spends her summer vacation volunteering in the ENPULSION production facilities in Austria. There, she meets Alexander again, who is now able to thoroughly respond to all of her questions. She is given opportunities to participate in significant product development experiments during the internship and is challenged in accordance with her talent. Anna naturally wants to know everything and to be able to accomplish it right away.
+<b>2028</b>  The prospect of maybe even walking on an asteroid with her own feet one day excites 18-year-old Anna and makes her even more determined to take the right courses at university to ensure that a landing with a human crew is not only possible — but that she can be there herself. But what exactly should she study to have a real chance of becoming an astronaut in the future...?",
                 'image' => 'Asset_Mars.png',
             ],
             'ASTEROID LANDING AND OTHER MOONS' => [
-                'text' => "The first asteroid landing will take place in 2028, when Anna graduates from high school, and university now lies ahead of her. Her future as a scientist thus lies ahead of her, and maybe - who knows — even as an astronaut?",
-                'image' => 'Asset_Asteroid.png',
+                'text' => "<b>2029</b>  The Axiom space station is in the process of replacing the ISS. Anna is just 19 years old when she begins her studies. The construction of the Artemis moon base - and with it the beginning of human settlement in space - accompanies Anna throughout her studies. Anna is interested in this field of human settlement and social life forms in space, for mass-array ion thrusters and advanced electric propulsion systems, but also for entanglement exchange in quantum repeaters for quantum communication over very long distances. She wonders which one to choose.
+<b>2037</b>  Anna, who is now 27 years old, completes her astronaut training precisely at the same time that the first trip departs for Alpha Centauri. She then works as a capcom to assist the more seasoned astronauts on international missions to Lunar Base. Anna could need all the assistance she can get.
+<b>2044</b>  The first astronaut to land on an asteroid with her crew, Anna (34) uses electric propulsion to push a portion of the asteroid toward Lunar Base, where it is utilized to gather fuel and regolith for the critical 3D printing procedures needed to develop Lunar Base Camp. The first emergence of a hype surrounding their extraction results from the more thorough analysis of the asteroid's primary ingredients...",
+                'bg_image' => 'Assets_AsteroidLanding.png',
             ],
-            'HER FUTURE UNVEILS' => "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+            'HER FUTURE UNVEILS' => [
+                'text' => "<b>2047</b>  The Clean Sky Project uses the agility, precision and endurance of a host of intelligently controlled Ion Thrusters to avoid the real threat of the Kessler Effect in low-Earth orbit by removing targeted space debris. Involved in the initiative is Anna, who is now 37 years old, and she has become an expert in these technologies. But with this assignment, she is once again faced with a tremendous challenge.
+<b>2054</b>  Since the discoveries in 2044–2045 concerning the precious materials contained in asteroids as well as the realized potential to mine them, a movement centered on asteroid mining has exploded. This impulse quickly led to the final democratization of the space industry, which was already highly differentiated due to the complex convergence of interests among business enterprises, states, the free academy, and NGOs. Suddenly, every private person wanted to participate in mining, and the approaching asteroid Klondike in the years 2051/52 caused all hopes to grow to excess. Anna (age 44) develops into an idealistic spokesman for the responsible use of little bodies and promotes a socially and environmentally responsible lifestyle. Again, Anna could use all the assistance she can get…",
+            ],
         ]);
     }
 
@@ -151,7 +153,7 @@ With great zeal and thirst for knowledge, Anna throws herself into the latest fi
 
         foreach ($pages as $title => $page) {
             $model = compact('title', 'weight', 'screen_id');
-            
+
             if (is_array($page)) {
                 $model = array_merge($model, $page);
             } else if(is_string($page)) {
