@@ -33,7 +33,8 @@ npm run build
 
 ## Environment Variables
 
-- `SUBSCRIBE_URL` - Where the subscribe link leads to.
+- `SUBSCRIBE_URL` - Where the subscribe link leads to. Leave empty to hide the button.
+- `SITE_LIVE` - Controls the Live/Coming Soon mode.
 
 ## Development
 
