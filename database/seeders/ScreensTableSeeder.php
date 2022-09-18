@@ -29,7 +29,7 @@ As the Near-Earth economy rapidly expanding and set to boom in the decade to com
                 'bg_video' => 'sceneTransition_001-HQ.mp4',
             ],
             '' => [
-                'video' => 'https://www.youtube.com/embed/zzbBLm1nsUA',
+                'video' => 'https://www.youtube.com/embed/Yu5vIDZKL58',
                 'bg_video' => 'sceneTransition_001-HQ.mp4',
             ],
             'CELEBRATING 100 IN SPACE' => [
