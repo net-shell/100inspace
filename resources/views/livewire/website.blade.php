@@ -92,7 +92,7 @@
                     <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
                     <img class="h-8" src="{{ url('/images/100inSpace_Logotype.svg') }}">
                 </a>
-                @if (!$showSplash)
+                @if (!$isLanding)
                 <span class="pl-2 ml-2 border-l border-white opacity-50">
                     {{ $currentScreen->title }}
                 </span>
@@ -113,7 +113,7 @@
 
     <!-- Current Screen Pages -->
     <main x-ref="pages" @scroll.throttle="changeScroll" class="fixed z-20 w-full overflow-y-auto top-24 bottom-24 no-scrollbar snap snap-y snap-mandatory anim-page-in">
-        @if ($showSplash)
+        @if ($isLanding)
         <!-- Splash -->
         <section id="page0" class="w-full h-full mb-64 snap-start" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" @click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
             <div class="flex items-center justify-center h-full">
@@ -149,6 +149,16 @@
                 <div class="leading-tight shadow-sm content-block">
                     &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
                 </div>
+
+                @if ($isLanding && $p === $currentScreen->pages->count() - 1)
+                <nav class="grid items-center grid-cols-3 gap-2 px-4 py-8 justify-items-stretch">
+                    @foreach ($screens->slice(1, $screens->count()) as $screen)
+                    <a class="block px-2 py-4 button" href="{{ route('app', ['screen' => $screen->slug]) }}">
+                        {{ $screen->title }}
+                    </a>
+                    @endforeach
+                </nav>
+                @endif
             </div>
             @endif
         </section>
@@ -198,7 +208,7 @@
                 <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
             </div>
             <div class="text-right">
-                @if ($nextScreen)
+                @if (!$isLanding && $nextScreen)
                 <a href="{{ route('app', ['screen' => $nextScreen->slug]) }}" @click="splashFade = true">
                     <span class="hidden mr-2 sm:inline">
                         {{ $nextScreen->title }}

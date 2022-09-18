@@ -12,7 +12,7 @@ class Website extends Component
     public $prevScreen;
     public $nextScreen;
     public $screens;
-    public $showSplash;
+    public $isLanding;
 
     public function mount()
     {
@@ -23,7 +23,7 @@ class Website extends Component
         $this->prevScreen = $this->screens->find($this->currentScreen->id - 1);
         $this->nextScreen = $this->screens->find($this->currentScreen->id + 1);
 
-        $this->showSplash = $this->currentScreen->id === $this->screens->first()->id;
+        $this->isLanding = $this->currentScreen->id === $this->screens->first()->id;
     }
 
     public function render()

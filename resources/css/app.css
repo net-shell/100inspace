@@ -125,6 +125,18 @@ body {
     padding-bottom: 50vh;
 }
 
+.button {
+    background-image: url(/images/buttonShape-inactive.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.button:hover {
+    background-image: url(/images/buttonShape-active.svg);
+}
+
 .bg-line {
     background-size: 1px 100%;
     background-repeat: no-repeat;
