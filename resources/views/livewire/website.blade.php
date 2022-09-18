@@ -37,14 +37,16 @@
         <div class="fixed flex justify-between w-full p-8">
             <a class="flex items-center text-xl" href="{{ route('app') }}">
                 <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
-                <span>{{ env('APP_NAME') }}</span>
+                <img class="h-8" src="{{ url('/images/100inSpace_Logotype.svg') }}">
             </a>
             <div class="flex items-center">
-                <a href="{{ env('SUBSCRIBE_URL') }}" class="px-4 py-2 mr-4 border text-orange-400 border-orange-400 hover:text-orange-300 hover:border-orange-300 transition-colors">
+                @if (env('SUBSCRIBE_URL'))
+                <a href="{{ env('SUBSCRIBE_URL') }}" class="px-4 py-2 mr-4 text-orange-400 transition-colors border border-orange-400 hover:text-orange-300 hover:border-orange-300">
                     SUBSCRIBE
                 </a>
-                <a class="menu-toggles p-2" x-on:click="showMenu = false" href="javascript:void(0);">
-                    <i class="fa-solid fa-xmark"></i>
+                @endif
+                <a class="menu-toggles" x-on:click="showMenu = false" href="javascript:void(0);">
+                    <i class="fa-solid fa-xmark fa-fw"></i>
                 </a>
             </div>
         </div>
@@ -67,6 +69,18 @@
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
                 <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
             </div>
+            <div class="flex justify-between items-top">
+                <div>
+                    <small class="inline leading-none opacity-50 sm:block">
+                        © 2022 ENPULSION GmbH. All rights reserved.
+                    </small>
+                </div>
+                <div class="text-right">
+                    <a class="opacity-50 hover:opacity-100" href="https://www.enpulsion.com/imprint/" target="_blank">
+                        <small>Imprint</small>
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -76,20 +90,20 @@
             <div class="flex items-center">
                 <a class="flex items-center" href="{{ route('app') }}">
                     <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">
-                    <span class="text-xl opacity-50 hover:opacity-100 transition-opacity border-r border-white pr-2">
-                        {{ env('APP_NAME') }}
-                    </span>
+                    <img class="h-8" src="{{ url('/images/100inSpace_Logotype.svg') }}">
                 </a>
                 @if (!$showSplash)
-                <span class="ml-2 opacity-50">
+                <span class="pl-2 ml-2 border-l border-white opacity-50">
                     {{ $currentScreen->title }}
                 </span>
                 @endif
             </div>
             <div class="flex justify-end content-right">
-                <a href="{{ env('SUBSCRIBE_URL') }}" class="hidden sm:block px-4 py-2 mr-4 border text-orange-400 border-orange-400 hover:text-orange-300 hover:border-orange-300 transition-colors">
+                @if (env('SUBSCRIBE_URL'))
+                <a href="{{ env('SUBSCRIBE_URL') }}" class="hidden px-4 py-2 mr-4 text-orange-400 transition-colors border border-orange-400 sm:block hover:text-orange-300 hover:border-orange-300">
                     SUBSCRIBE
                 </a>
+                @endif
                 <a class="menu-toggle" href="javascript:void(0);" x-on:click="showMenu = true">
                     <i class="fa-solid fa-bars"></i>
                 </a>
@@ -125,13 +139,13 @@
                     {{ $page->title }}
                 </h1>
                 @endif
-    
+
                 @if($page->image)
-                <div class="sm:fixed sm:top-32 sm:left-8 page-gallery p-8" x-show="page == {{ $p + 1 }}" x-transition.opacity x-cloak>
-                    <img class="main-image transition-transform" src="{{ url('/images/content/' . $page->image) }}">
+                <div class="p-8 sm:fixed sm:top-32 sm:left-8 page-gallery" x-show="page == {{ $p + 1 }}" x-transition.opacity x-cloak>
+                    <img class="transition-transform main-image" src="{{ url('/images/content/' . $page->image) }}">
                 </div>
                 @endif
-                
+
                 <div class="leading-tight shadow-sm content-block">
                     &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
                 </div>
@@ -168,19 +182,16 @@
 
     <!-- Footer -->
     <footer class="fixed bottom-0 z-20 w-full p-8">
-        <div class="grid grid-cols-3 justify-items-stretch items-center">
+        <div class="grid items-center grid-cols-3 justify-items-stretch">
             <div>
                 @if ($prevScreen)
-                <a class="inline sm:block transition-opacity duration-500 opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => $prevScreen->slug]) }}">
+                <a class="inline sm:block" href="{{ route('app', ['screen' => $prevScreen->slug]) }}">
                     <img class="inline-block w-4 h-4 rotate-180" src="{{ url('/images/arrow.svg') }}">
                     <span class="hidden ml-2 sm:inline">
                         {{ $prevScreen->title }}
                     </span>
                 </a>
                 @endif
-                <small class="inline sm:block opacity-50">
-                    © 2022 ENPULSION GmbH. All rights reserved.
-                </small>
             </div>
             <div class="flex items-center justify-center">
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
@@ -188,18 +199,25 @@
             </div>
             <div class="text-right">
                 @if ($nextScreen)
-                <a class="transition-opacity duration-500 opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => $nextScreen->slug]) }}" @click="splashFade = true">
+                <a href="{{ route('app', ['screen' => $nextScreen->slug]) }}" @click="splashFade = true">
                     <span class="hidden mr-2 sm:inline">
                         {{ $nextScreen->title }}
                     </span>
                     <img class="inline-block w-4 h-4" src="{{ url('/images/arrow.svg') }}">
                 </a>
                 @endif
-                <small class="block">
-                    <a class="opacity-50 hover:opacity-100" href="https://www.enpulsion.com/imprint/" target="_blank">
-                        Imprint
-                    </a>
+            </div>
+        </div>
+        <div class="flex justify-between items-top">
+            <div>
+                <small class="inline leading-none opacity-50 sm:block">
+                    © 2022 ENPULSION GmbH. All rights reserved.
                 </small>
+            </div>
+            <div class="text-right">
+                <a class="opacity-50 hover:opacity-100" href="https://www.enpulsion.com/imprint/" target="_blank">
+                    <small>Imprint</small>
+                </a>
             </div>
         </div>
     </footer>
