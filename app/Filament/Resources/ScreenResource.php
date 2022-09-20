@@ -32,6 +32,7 @@ class ScreenResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('weight')
                     ->numeric(),
+                Forms\Components\Checkbox::make('hidden'),
             ]);
     }
 
@@ -39,6 +40,12 @@ class ScreenResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\BooleanColumn::make('hidden')
+                    ->label('Visible')
+                    ->trueIcon('heroicon-o-x-circle')
+                    ->falseIcon('heroicon-o-badge-check')
+                    ->trueColor('secondary')
+                    ->falseColor('success'),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('weight'),
@@ -53,14 +60,14 @@ class ScreenResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\PagesRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -68,5 +75,10 @@ class ScreenResource extends Resource
             'create' => Pages\CreateScreen::route('/create'),
             'edit' => Pages\EditScreen::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes(['visible']);
+    }
 }

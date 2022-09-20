@@ -155,9 +155,9 @@
                 </div>
 
                 @if ($isLanding && $p === $currentScreen->pages->count() - 1)
-                <nav class="grid items-center grid-cols-3 gap-2 px-4 py-8 justify-items-stretch">
+                <nav class="grid items-center grid-cols-3 gap-2 py-8 justify-items-stretch">
                     @foreach ($screens->slice(1, $screens->count()) as $screen)
-                    <a class="block px-2 py-4 button" href="{{ route('app', ['screen' => $screen->slug]) }}">
+                    <a class="block py-4 text-sm button whitespace-nowrap sm:text-base" href="{{ route('app', ['screen' => $screen->slug]) }}">
                         {{ $screen->title }}
                     </a>
                     @endforeach

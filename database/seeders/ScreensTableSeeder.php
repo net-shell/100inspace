@@ -20,10 +20,7 @@ class ScreensTableSeeder extends Seeder
         // Landing
         $this->addScreen('JOIN 100IN.SPACE', [
             'EMBRACING A NEW ERA IN THE NEAR-EARTH ECONOMY' => [
-                'text' => "Mobility in space is essential. Without it, we could not show you this site. You wouldn’t be able to read this, nor write your parents, nor text your friends, or to navigate your way back home, when needed.
-Life as we know it wouldn’t be the same without satellites. And satellites simply couldn’t be the engines of our modern societies if it wasn’t for their driving force — their thrusters.
-At ENPULSION it is our mission to create innovative ion thrusters that can serve as pillars to a thriving near-Earth economy, inspiring you to look up at the sky and see a better future.
-Mobility in space is needed, more than ever. Without this capability, satellites supporting life on Earth would be constantly exposed to cosmic threats.  If satellite communications were abruptly disrupted, you might not be able to use your phone anymore or be guided safely home when needed.
+                'text' => "Mobility in space is needed, more than ever. Without this capability, satellites supporting life on Earth would be constantly exposed to cosmic threats.  If satellite communications were abruptly disrupted, you might not be able to use your phone anymore or be guided safely home when needed.
 Life as we know today just wouldn’t be the same without satellites. And their widespread use for fast digitalization in many sectors could have not happened if it wasn’t for their driving force — their propulsion systems. These allow spacecraft to complete missions in the most effective way, changing their orbit or inclination for better optimization.
 As the Near-Earth economy rapidly expanding and set to boom in the decade to come, ENPULSION is proud to be an enabler of this new wave of innovation.",
                 'bg_video' => 'sceneTransition_001-HQ.mp4',
@@ -137,14 +134,20 @@ All these new applications have the potential to significantly accelerate the co
 <b>2054</b>  Since the discoveries in 2044–2045 concerning the precious materials contained in asteroids as well as the realized potential to mine them, a movement centered on asteroid mining has exploded. This impulse quickly led to the final democratization of the space industry, which was already highly differentiated due to the complex convergence of interests among business enterprises, states, the free academy, and NGOs. Suddenly, every private person wanted to participate in mining, and the approaching asteroid Klondike in the years 2051/52 caused all hopes to grow to excess. Anna (age 44) develops into an idealistic spokesman for the responsible use of little bodies and promotes a socially and environmentally responsible lifestyle. Again, Anna could use all the assistance she can get…",
             ],
         ]);
+
+        // HIDDEN SCREENS
+
+        $this->addScreen('Imprint', [
+            '' => '',
+        ], true);
     }
 
-    private function addScreen($title, $pages)
+    private function addScreen($title, $pages, $hidden = false)
     {
         // Add screen
         $slug = str_slug(strtolower($title));
         $weight = Screen::count() + 1;
-        $screen = Screen::firstOrCreate(compact('title', 'slug', 'weight'));
+        $screen = Screen::firstOrCreate(compact('title', 'slug', 'weight', 'hidden'));
 
         // Add pages
         if (!$pages) return;

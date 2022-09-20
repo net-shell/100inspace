@@ -17,6 +17,11 @@ class Screen extends Model
     protected static function boot()
     {
         parent::boot();
+
+        static::addGlobalScope('visible', function (Builder $builder) {
+            $builder->whereHidden(false);
+        });
+
         static::addGlobalScope('order', function (Builder $builder) {
             $builder->orderBy('weight', 'asc');
         });
