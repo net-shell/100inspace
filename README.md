@@ -40,6 +40,7 @@ php artisan key:generate
 php artisan migrate
 php artisan db:seed
 php artisan shield:install --fresh
+php artisan storage:link
 ```
 
 3. Build the assets:
