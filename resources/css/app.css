@@ -117,7 +117,12 @@ body {
     width: 30vw;
 }
 
-.page-gallery .main-image {
+.page-gallery img {
+    transition: transform 1s;
+    transform: none;
+}
+
+.page-gallery img:hover {
     transform: perspective(400px) rotateY(10deg);
 }
 

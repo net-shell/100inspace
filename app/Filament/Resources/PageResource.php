@@ -23,14 +23,15 @@ class PageResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('screen_id')
+                    ->relationship('screen', 'title', fn (Builder $query) => $query->withoutGlobalScope('visible')),
+                Forms\Components\TextInput::make('weight')
+                    ->numeric(),
                 Forms\Components\TextInput::make('title')
                     ->columnSpan(2)
                     ->maxLength(255),
-                Forms\Components\Select::make('screen_id')
-                    ->relationship('screen', 'title'),
-                Forms\Components\TextInput::make('weight')
-                    ->numeric(),
                 Forms\Components\Textarea::make('text')
+                    ->rows(10)
                     ->columnSpan(2),
                 Forms\Components\Textarea::make('learn_more')
                     ->hint('Leave empty to disable the popup.')
@@ -42,7 +43,11 @@ class PageResource extends Resource
                     ->label('Background Video File'),
                 Forms\Components\TextInput::make('video')
                     ->url()
-                    ->label('YouTube Video to Embed'),
+                    ->hint('YouTube video URL')
+                    ->prefixIcon('heroicon-o-play')
+                    ->label('Embed YouTube Video'),
+                Forms\Components\TextInput::make('image')
+                    ->label('Static Image File'),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('gallery')
                     ->columnSpan(2)
                     ->collection('gallery')

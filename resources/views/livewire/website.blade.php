@@ -119,7 +119,7 @@
     <main x-ref="pages" @scroll.throttle="changeScroll" class="fixed z-20 w-full overflow-y-auto top-24 bottom-24 no-scrollbar snap snap-y snap-mandatory anim-page-in">
         @if ($isLanding)
         <!-- Splash -->
-        <section id="page0" class="w-full h-full mb-64 snap-start" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" @click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
+        <section id="page0" class="w-full h-full mb-64 snap-start" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" x-on:click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
             <div class="flex items-center justify-center h-full">
                 <img class="w-60 h-60 anim-splash-logo animate__infinite" :class="{ 'anim-splash-fade': (page === 0 && scrolled > 0.375) || splashFade }" src="{{ url('/images/100inSpace_Identity.png') }}">
             </div>
@@ -138,15 +138,35 @@
             </div>
             @else
             <div class="page-content">
-                @if($page->title)
+                @if ($page->title)
                 <h1 class="mb-4 leading-none heading outlined" id="{{ Str::slug($page->title) }}">
                     {{ $page->title }}
                 </h1>
                 @endif
 
-                @if($page->image)
+                @if ($page->image || $page->getMedia('gallery'))
                 <div class="p-8 sm:fixed sm:top-32 sm:left-8 page-gallery" x-show="page == {{ $p + 1 }}" x-transition.opacity x-cloak>
-                    <img class="transition-transform main-image" src="{{ url('/images/content/' . $page->image) }}">
+                    @if ($page->image)
+                    <img src="{{ url('/images/content/' . $page->image) }}">
+                    @endif
+
+                    @if ($page->getMedia('gallery'))
+                    <div class="gallery" x-data="{ current: 0 }">
+                        <div x-on:click="current++; if(current === {{ $page->getMedia('gallery')->count() }}) current = 0;">
+                            @foreach ($page->getMedia('gallery') as $i => $image)
+                            <div x-show="current === {{ $i }}" x-cloak>
+                                {{ $image }}
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <div class="flex justify-center gap-2 py-2">
+                            @foreach ($page->getMedia('gallery') as $i => $image)
+                            <div class="w-3 h-3 transition-colors rounded-full bg-white/50 hover:bg-white" :class="{ 'bg-white': current === {{ $i }} }" x-on:click="current = {{ $i }}">&nbsp;</div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 @endif
 
@@ -155,6 +175,7 @@
                 </div>
 
                 @if ($isLanding && $p === $currentScreen->pages->count() - 1)
+                <!-- Landing Navigation Buttons -->
                 <nav class="grid items-center grid-cols-3 gap-2 py-8 justify-items-stretch">
                     @foreach ($screens->slice(1, $screens->count()) as $screen)
                     <a class="block py-4 text-sm button whitespace-nowrap sm:text-base" href="{{ route('app', ['screen' => $screen->slug]) }}">
@@ -213,7 +234,7 @@
             </div>
             <div class="text-right">
                 @if (!$isLanding && $nextScreen)
-                <a href="{{ route('app', ['screen' => $nextScreen->slug]) }}" @click="splashFade = true">
+                <a href="{{ route('app', ['screen' => $nextScreen->slug]) }}" x-on:click="splashFade = true">
                     <span class="hidden mr-2 sm:inline">
                         {{ $nextScreen->title }}
                     </span>
