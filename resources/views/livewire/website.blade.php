@@ -30,7 +30,7 @@
     </div>
 
     <!-- Stars -->
-    <div class="absolute z-30 overflow-hidden bg-stars anim-fade-in-slow" x-data>
+    <div class="absolute w-full h-full overflow-hidden bg-stars anim-fade-in-slow" x-data>
         <template x-for="s in 100">
             <i x-bind:style="{ top: Math.floor(Math.random() * window.innerHeight) + 'px', left: Math.floor(Math.random() * window.innerWidth) + 'px', 'font-size': Math.floor(Math.random() * 12) + 24 + 'px' }">.</i>
         </template>

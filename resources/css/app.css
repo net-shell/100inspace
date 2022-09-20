@@ -113,6 +113,10 @@ body {
     padding-bottom: 50vh;
 }
 
+.page-content a {
+    text-decoration: underline;
+}
+
 .page-gallery {
     width: 30vw;
 }
