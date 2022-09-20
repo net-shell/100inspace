@@ -32,7 +32,8 @@ class ScreenResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('weight')
                     ->numeric(),
-                Forms\Components\Checkbox::make('hidden'),
+                Forms\Components\Checkbox::make('hidden')
+                    ->label('Show In Menu'),
             ]);
     }
 
@@ -41,7 +42,7 @@ class ScreenResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\BooleanColumn::make('hidden')
-                    ->label('Visible')
+                    ->label('In Menu')
                     ->trueIcon('heroicon-o-x-circle')
                     ->falseIcon('heroicon-o-badge-check')
                     ->trueColor('secondary')
@@ -54,6 +55,11 @@ class ScreenResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('preview')
+                    ->label('Preview in Browser')
+                    ->color('success')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn (Screen $record): string => route('app', ['screen' => $record->slug])),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

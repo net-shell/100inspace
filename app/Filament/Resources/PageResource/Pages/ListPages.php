@@ -5,6 +5,7 @@ namespace App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Tables\Filters\Layout;
 
 class ListPages extends ListRecords
 {
@@ -15,5 +16,20 @@ class ListPages extends ListRecords
         return [
             Actions\CreateAction::make(),
         ];
+    }
+
+    protected function isTablePaginationEnabled(): bool
+    {
+        return false;
+    }
+
+    protected function getTableFiltersLayout(): ?string
+    {
+        return Layout::AboveContent;
+    }
+
+    protected function shouldPersistTableFiltersInSession(): bool
+    {
+        return true;
     }
 }

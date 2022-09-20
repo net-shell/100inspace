@@ -17,11 +17,17 @@ class Website extends Component
     public function mount()
     {
         $screen = Route::current()->parameter('screen');
-        $this->currentScreen = $screen ? Screen::whereSlug($screen)->first() : Screen::first();
+        $this->currentScreen = $screen
+            ? Screen::withoutGlobalScopes()
+                ->whereSlug($screen)
+                ->first()
+            : Screen::first();
         $this->screens = Screen::all();
 
-        $this->prevScreen = $this->screens->find($this->currentScreen->id - 1);
-        $this->nextScreen = $this->screens->find($this->currentScreen->id + 1);
+        if ($this->currentScreen && !$this->currentScreen->hidden) {
+            $this->prevScreen = $this->screens->find($this->currentScreen->id - 1);
+            $this->nextScreen = $this->screens->find($this->currentScreen->id + 1);
+        }
 
         $this->isLanding = $this->currentScreen->id === $this->screens->first()->id;
     }

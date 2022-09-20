@@ -80,7 +80,7 @@
                     </small>
                 </div>
                 <div class="text-right">
-                    <a class="opacity-50 hover:opacity-100" href="https://www.enpulsion.com/imprint/" target="_blank">
+                    <a class="opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => 'imprint']) }}">
                         <small>Imprint</small>
                     </a>
                 </div>
@@ -170,7 +170,7 @@
     </main>
 
     <!-- Scrollbar Navigation -->
-    @if (count($currentScreen->pages) && $currentScreen->id != $screens->first()->id)
+    @if ($currentScreen->id != $screens->first()->id && ! $currentScreen->hidden && count($currentScreen->pages) > 1)
     <aside class="fixed z-20 hidden overflow-x-visible overflow-y-auto w-50 right-8 top-24 bottom-24 sm:block anim-fade-in-slow no-scrollbar" x-show="!!page" x-cloak>
         <div class="flex items-center justify-center h-full bg-line" style="background-image: url(/images/dim_line.svg);">
             <div class="grid gap-8 pr-8">
@@ -229,7 +229,7 @@
                 </small>
             </div>
             <div class="text-right">
-                <a class="opacity-50 hover:opacity-100" href="https://www.enpulsion.com/imprint/" target="_blank">
+                <a class="opacity-50 hover:opacity-100" href="{{ route('app', ['screen' => 'imprint']) }}">
                     <small>Imprint</small>
                 </a>
             </div>

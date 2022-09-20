@@ -30,15 +30,24 @@ class PageResource extends Resource
                     ->relationship('screen', 'title'),
                 Forms\Components\TextInput::make('weight')
                     ->numeric(),
-                Forms\Components\RichEditor::make('text')
+                Forms\Components\Textarea::make('text')
                     ->columnSpan(2),
-                    Forms\Components\TextInput::make('bg_image')
+                Forms\Components\Textarea::make('learn_more')
+                    ->hint('Leave empty to disable the popup.')
+                    ->hintIcon('heroicon-o-information-circle')
+                    ->columnSpan(2),
+                Forms\Components\TextInput::make('bg_image')
                     ->label('Background Image File'),
-                    Forms\Components\TextInput::make('bg_video')
+                Forms\Components\TextInput::make('bg_video')
                     ->label('Background Video File'),
                 Forms\Components\TextInput::make('video')
                     ->url()
                     ->label('YouTube Video to Embed'),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('gallery')
+                    ->columnSpan(2)
+                    ->collection('gallery')
+                    ->multiple()
+                    ->enableReordering(),
             ]);
     }
 
@@ -46,15 +55,16 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('screen.title'),
-                Tables\Columns\TextColumn::make('weight'),
+                Tables\Columns\TextColumn::make('title'),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('screen')
+                    ->relationship('screen', 'title', fn (Builder $query) => $query->withoutGlobalScope('visible')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()->excludeAttributes(['slug']),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
