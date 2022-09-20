@@ -113,7 +113,7 @@ body {
     padding-bottom: 50vh;
 }
 
-.page-content a {
+.page-content a:not(.button) {
     text-decoration: underline;
 }
 
