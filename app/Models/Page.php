@@ -13,7 +13,7 @@ class Page extends Model implements HasMedia
 
     public $timestamps = false;
 
-    protected $fillable = ['title', 'text', 'image', 'video', 'bg_video', 'weight', 'screen_id'];
+    protected $fillable = ['title', 'text', 'learn_more', 'image', 'video', 'bg_video', 'weight', 'screen_id'];
 
     public function screen()
     {

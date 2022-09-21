@@ -174,6 +174,21 @@
                     &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
                 </div>
 
+
+                @if ($page->learn_more)
+                <!-- Learn More -->
+                <nav class="flex justify-center py-8" x-data="{ open: false }">
+                    <a x-on:click="open = true" class="block p-4 text-sm button whitespace-nowrap sm:text-base" href="javascript: void(0);">
+                        Learn More
+                    </a>
+                    <div x-show="open" x-transition x-cloak class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full backdrop-blur-sm">
+                        <div class="w-1/2 p-4 overflow-y-auto rounded-md h-1/2 bg-black/80" x-on:click.outside="open = false">
+                            {!! str_replace("\n", '<br>', $page->learn_more) !!}
+                        </div>
+                    </div>
+                </nav>
+                @endif
+
                 @if ($isLanding && $p === $currentScreen->pages->count() - 1)
                 <!-- Landing Navigation Buttons -->
                 <nav class="grid items-center grid-cols-3 gap-2 py-8 justify-items-stretch">
