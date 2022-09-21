@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Screen;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ScreenPolicy
@@ -24,9 +25,10 @@ class ScreenPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
+     * @param  \App\Models\Screen  $screen
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user)
+    public function view(User $user, Screen $screen)
     {
         return $user->can('view_screen');
     }
@@ -46,9 +48,10 @@ class ScreenPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
+     * @param  \App\Models\Screen  $screen
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user)
+    public function update(User $user, Screen $screen)
     {
         return $user->can('update_screen');
     }
@@ -57,9 +60,10 @@ class ScreenPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
+     * @param  \App\Models\Screen  $screen
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user)
+    public function delete(User $user, Screen $screen)
     {
         return $user->can('delete_screen');
     }
@@ -79,9 +83,10 @@ class ScreenPolicy
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
+     * @param  \App\Models\Screen  $screen
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user)
+    public function forceDelete(User $user, Screen $screen)
     {
         return $user->can('force_delete_screen');
     }
@@ -101,9 +106,10 @@ class ScreenPolicy
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
+     * @param  \App\Models\Screen  $screen
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user)
+    public function restore(User $user, Screen $screen)
     {
         return $user->can('restore_screen');
     }
@@ -123,9 +129,10 @@ class ScreenPolicy
      * Determine whether the user can bulk restore.
      *
      * @param  \App\Models\User  $user
+     * @param  \App\Models\Screen  $screen
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user)
+    public function replicate(User $user, Screen $screen)
     {
         return $user->can('replicate_screen');
     }

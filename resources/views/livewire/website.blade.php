@@ -14,7 +14,7 @@
         }
     }">
     <!-- Background -->
-    <div class="fixed z-0 w-full h-full bg-cover" style="background-image: url('/images/scene_001.png');">
+    <div class="fixed z-0 w-full h-full bg-cover bg-black" style="background-image: url('/images/scene_001.png');">
         <template x-if="bgImage">
             <div :style="{ 'background-image': 'url(/images/content/' + bgImage + ')' }" class="w-full h-full bg-left-bottom bg-no-repeat bg-contain"></div>
         </template>
@@ -116,7 +116,7 @@
     </header>
 
     <!-- Current Screen Pages -->
-    <main x-ref="pages" @scroll.throttle="changeScroll" class="fixed z-20 w-full overflow-y-auto top-24 bottom-24 no-scrollbar snap snap-y snap-mandatory anim-page-in">
+    <main x-ref="pages" @scroll.throttle="changeScroll" class="fixed z-20 w-full overflow-y-auto top-24 bottom-24 no-scrollbar snap snap-y snap-mandatory anim-page-in" :class="{ 'pages-static': {{ $isHidden }} }">
         @if ($isLanding)
         <!-- Splash -->
         <section id="page0" class="w-full h-full mb-64 snap-start" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" x-on:click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
@@ -139,7 +139,7 @@
             @else
             <div class="page-content">
                 @if ($page->title)
-                <h1 class="mb-4 leading-none heading outlined" id="{{ Str::slug($page->title) }}">
+                <h1 class="mb-4 leading-none heading" :class="{ 'outlined': {{ !$isHidden }} }" id="{{ Str::slug($page->title) }}">
                     {{ $page->title }}
                 </h1>
                 @endif

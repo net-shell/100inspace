@@ -112,6 +112,11 @@ body {
     padding-bottom: 50vh;
 }
 
+.pages-static .page-content {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
 .page-content a:not(.button) {
     text-decoration: underline;
 }

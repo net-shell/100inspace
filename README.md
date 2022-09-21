@@ -45,7 +45,6 @@ php artisan storage:link
 
 3. Build the assets:
 ```
-npm install
 npm run build
 ```
 
@@ -62,6 +61,7 @@ php artisan make:filament-user
 
 ## Environment Variables
 
+- `APP_ENV` - `local`, `production`, etc...
 - `SUBSCRIBE_URL` - Where the subscribe link leads to. Leave empty to hide the button.
 - `SITE_LIVE` - Controls the Live/Coming Soon mode.
 

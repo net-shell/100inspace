@@ -13,6 +13,7 @@ class Website extends Component
     public $nextScreen;
     public $screens;
     public $isLanding;
+    public $isHidden = true;
 
     public function mount()
     {
@@ -27,6 +28,7 @@ class Website extends Component
         if ($this->currentScreen && !$this->currentScreen->hidden) {
             $this->prevScreen = $this->screens->find($this->currentScreen->id - 1);
             $this->nextScreen = $this->screens->find($this->currentScreen->id + 1);
+            $this->isHidden = false;
         }
 
         $this->isLanding = $this->currentScreen->id === $this->screens->first()->id;
