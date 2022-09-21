@@ -34,6 +34,9 @@ class ScreenResource extends Resource
                     ->numeric(),
                 Forms\Components\Checkbox::make('hidden')
                     ->label('Show In Menu'),
+                Forms\Components\TextInput::make('bg_image')
+                    ->label('Background Image File')
+                    ->maxLength(255),
             ]);
     }
 
@@ -48,7 +51,6 @@ class ScreenResource extends Resource
                     ->trueColor('secondary')
                     ->falseColor('success'),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('weight'),
             ])
             ->filters([

@@ -9,6 +9,8 @@ class Screen extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = ['title', 'slug', 'weight', 'bg_image'];
+
     public function pages()
     {
         return $this->hasMany(Page::class);

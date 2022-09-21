@@ -63,7 +63,7 @@ In Europe, the quest for capable thrusters gained momentum with the SMART-1 miss
 This period of impressive technological innovation was a paradigm shift for the industry. Electric propulsion repeatedly demonstrated its potential for demanding missions, building trust in their reliability and performances. After decades of being considered impractical and unreliable, electric propulsion supported some of the most innovative missions in deep space exploration and marked the birth of the electric age for spacecraft. The commercial availability of some of the most advanced EP thrusters coming from the Soviet Union combined with successful technology demonstrations favourized their adoption on the commercial telecom market. Operators recognized their value for high-precision maneuvers and set at the same time a new standard for years to come. Between 2000 and 2010, the number of electricity powered satellites more than doubled, and the commercialization of EP thrusters started gaining momentum ever since.",
                 'gallery' => ['past_photo_3-1.png', 'past_photo_3-2.png', 'past_photo_3-3.png'],
             ],
-        ]);
+        ], false, 'emptySpace.png');
 
         // Present
         $this->addScreen('THE PRESENT', [
@@ -135,24 +135,29 @@ All these new applications have the potential to significantly accelerate the co
                 'text' => "<b>2047</b>  The Clean Sky Project uses the agility, precision and endurance of a host of intelligently controlled Ion Thrusters to avoid the real threat of the Kessler Effect in low-Earth orbit by removing targeted space debris. Involved in the initiative is Anna, who is now 37 years old, and she has become an expert in these technologies. But with this assignment, she is once again faced with a tremendous challenge.
 <b>2054</b>  Since the discoveries in 2044–2045 concerning the precious materials contained in asteroids as well as the realized potential to mine them, a movement centered on asteroid mining has exploded. This impulse quickly led to the final democratization of the space industry, which was already highly differentiated due to the complex convergence of interests among business enterprises, states, the free academy, and NGOs. Suddenly, every private person wanted to participate in mining, and the approaching asteroid Klondike in the years 2051/52 caused all hopes to grow to excess. Anna (age 44) develops into an idealistic spokesman for the responsible use of little bodies and promotes a socially and environmentally responsible lifestyle. Again, Anna could use all the assistance she can get…",
             ],
-        ]);
+        ], false, 'emptySpace.png');
 
         // HIDDEN SCREENS
 
         $this->addScreen('Imprint', [
-            'Imprint' => 'COMPANY
+            '' => '<div class="grid grid-cols-2 w-full items-top justify-items-stretch"><div>
+<h3 class="heading">IMPRINT</h3>            
+COMPANY
 ENPULSION GmbH
 Trade and services in the space sector
 ADDRESS
 Viktor Kaplan-Strasse 2
 2700 Wiener Neustadt
 CONTACT
-Please send us an e-mail using our <a href="https://www.enpulsion.com/contact/">contact form</a>',
-            'INFORMATION ACCORDING TO E-COMMERCE LAW' => 'Authority acc. ECG (E-Commerce Law): District Commission Wiener Neustadt (City) Chamber membership: Member of the Lower Austrian Chamber of Commerce
+Please send us an e-mail using our <a href="https://www.enpulsion.com/contact/">contact form</a>
+</div><div>
+<h3 class="heading">INFORMATION ACCORDING TO E-COMMERCE LAW</h3>
+Authority acc. ECG (E-Commerce Law): District Commission Wiener Neustadt (City) Chamber membership: Member of the Lower Austrian Chamber of Commerce
 Specialized groups: LG Machine and Technology Trade – Trade with technical and industrial needs. LI mechatronics engineer – mechatronics engineer for electrical engineering and automation
 Responsible for the content: Alexander Reissner Commercial
 register number: FN 448479 d
-Landesgericht Wiener Neustadt',
+Landesgericht Wiener Neustadt
+</div></div>',
             'PAYMENT INFORMATION' => 'UID: ATU 70772434
 Bank details
 Receiver: ENPULSION GmbH
@@ -469,12 +474,12 @@ ENPULSION has the right to determine the labeling of the Products in its sole di
         ], true);
     }
 
-    private function addScreen($title, $pages, $hidden = false)
+    private function addScreen($title, $pages, $hidden = false, $bg_image = null)
     {
         // Add screen
         $slug = str_slug(strtolower($title));
         $weight = Screen::withoutGlobalScopes()->count() + 1;
-        $screen = Screen::firstOrCreate(compact('title', 'slug', 'weight', 'hidden'));
+        $screen = Screen::create(compact('title', 'slug', 'weight', 'hidden', 'bg_image'));
 
         // Add pages
         if (!$pages) return;

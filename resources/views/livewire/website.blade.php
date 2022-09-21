@@ -14,7 +14,7 @@
         }
     }">
     <!-- Background -->
-    <div class="fixed z-0 w-full h-full bg-cover bg-black" style="background-image: url('/images/scene_001.png');">
+    <div class="fixed z-0 w-full h-full bg-cover bg-black" style="background-image: url('/images/{{ $currentScreen->bg_image ?? 'scene_001.png' }}');">
         <template x-if="bgImage">
             <div :style="{ 'background-image': 'url(/images/content/' + bgImage + ')' }" class="w-full h-full bg-left-bottom bg-no-repeat bg-contain"></div>
         </template>
@@ -37,7 +37,7 @@
     </div>
 
     <!-- Menu Overlay -->
-    <nav class="fixed z-50 w-full h-screen bg-cover" x-cloak x-show="showMenu" x-transition:enter="anim-fade-in" x-transition:leave="anim-fade-out" style="background-image: url('/images/scene_001.png');">
+    <nav class="fixed z-50 w-full h-screen bg-cover" x-cloak x-show="showMenu" x-transition:enter="anim-fade-in" x-transition:leave="anim-fade-out" style="background-image: url('/images/{{ $currentScreen->bg_image ?? 'scene_001.png' }}');">
         <div class="fixed flex justify-between w-full p-8">
             <a class="flex items-center text-xl" href="{{ route('app') }}">
                 <img class="w-8 h-8 mr-2" src="{{ url('/images/100inSpace_Identity.png') }}">

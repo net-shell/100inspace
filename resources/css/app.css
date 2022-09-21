@@ -115,10 +115,11 @@ body {
 .pages-static .page-content {
     margin-left: 5vw;
     margin-right: 5vw;
+    padding-top: 10vh;
 }
 
-.page-content a:not(.button) {
-    text-decoration: underline;
+.pages-static .page-content a:not(.button) {
+    color: #DD8E6A;
 }
 
 .page-gallery {
