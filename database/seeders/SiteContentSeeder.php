@@ -140,38 +140,50 @@ All these new applications have the potential to significantly accelerate the co
         // HIDDEN SCREENS
 
         $this->addScreen('Imprint', [
-            '' => '<div class="grid w-full grid-cols-2 items-top justify-items-stretch"><div>
-<h3 class="heading">IMPRINT</h3>
-COMPANY
+            'IMPRINT' => '<div class="grid w-full grid-cols-2 items-top justify-items-stretch"><div>
+<b>COMPANY</b>
 ENPULSION GmbH
 Trade and services in the space sector
-ADDRESS
+<b>ADDRESS</b>
 Viktor Kaplan-Strasse 2
 2700 Wiener Neustadt
-CONTACT
+<b>CONTACT</b>
 Please send us an e-mail using our <a href="https://www.enpulsion.com/contact/">contact form</a>
 </div><div>
-<h3 class="heading">INFORMATION ACCORDING TO E-COMMERCE LAW</h3>
+<b>INFORMATION ACCORDING TO E-COMMERCE LAW</b>
 Authority acc. ECG (E-Commerce Law): District Commission Wiener Neustadt (City) Chamber membership: Member of the Lower Austrian Chamber of Commerce
 Specialized groups: LG Machine and Technology Trade – Trade with technical and industrial needs. LI mechatronics engineer – mechatronics engineer for electrical engineering and automation
 Responsible for the content: Alexander Reissner Commercial
 register number: FN 448479 d
 Landesgericht Wiener Neustadt
-</div></div>',
-            'PAYMENT INFORMATION' => 'UID: ATU 70772434
+</div></div>
+
+<b>PAYMENT INFORMATION</b>
+UID: ATU 70772434
 Bank details
 Receiver: ENPULSION GmbH
 IBAN: AT92 2011 1837 1953 8000
 BIC: GIBAATWWXXX
-GENERAL BUSINESS CONDITIONS
+
+<b>GENERAL BUSINESS CONDITIONS</b>
 U.S. customers please refer to our <a href="https://www.100in.space/terms-of-service-usa/">General Terms and Conditions and Terms of Use ENPULSION Inc</a>.
-Customers from the rest of the world please refer to our <a href="https://www.100in.space/terms-of-service/">General Terms and Condition and Terms of Use ENPULSION GmbH</a>',
-            'PRIVACY POLICY' => '<a href="https://www.100in.space/privacy-policy/">Link to our Privacy Policy</a>',
-            'GOOGLE ANALYTICS' => '„Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA übertragen und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten von Google in Verbindung bringen. Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.“
-Nähere Informationen zu Nutzungsbedingungen und Datenschutz finden Sie unter http://www.google.com/analytics/terms/de.html bzw. unter http://www.google.com/intl/de/analytics/privacyoverview.html. Wir weisen Sie darauf hin, dass auf dieser Webseite Google Analytics um den Code „gat._anonymizeIp();“ erweitert wurde, um eine anonymisierte Erfassung von IP-Adressen (sog. IP-Masking) zu gewährleisten.',
-            'VERWEISE UND LINKS' => 'Unser Angebot kann auch Links und Verweise zu Internangeboten Dritter enthalten. Wir möchten Sie darauf hinweisen, dass wir keinen Einfluss auf deren Inhalte haben und demnach auch keine Gewähr dafür übernehmen können. Allein der Drittanbieter ist für seine Internetseiten verantwortlich. Wir haben jedoch zum Zeitpunkt der Verlinkung bzw. des Verweises die Internetseiten Dritter auf mögliche offensichtliche Rechtsverstöße geprüft und keine solche feststellen können. Da eine laufende Überprüfung verlinkter Internetseiten nicht möglich und auch nicht zumutbar ist, können wir lediglich bei konkreten Anhaltspunkten reagieren. Sobald uns ein Rechtsverstoß bekannt wird, werden wir derartige Links bzw. Verweise umgehend entfernen.',
-            'INHALT DES ONLINEANGEBOTES' => 'Wir übernehmen keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen uns, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen, sofern seitens Weboo kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt. Alle Angebote sind freibleibend und unverbindlich. Wir behalten es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.',
-            'URHEBER - UND KENNZEICHENRECHT' => 'Wir sind bestrebt, in allen Publikationen die Urheberrechte der verwendeten Grafiken, Tondokumente, Videosequenzen und Texte zu beachten, von uns selbst erstellte Grafiken, Tondokumente, Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken, Tondokumente, Videosequenzen und Texte zurückzugreifen. Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte Dritter geschützt sind! Das Copyright für veröffentlichte, von uns selbst erstellte Objekte bleiben allein auf dieser Seiten. Eine Vervielfältigung oder Verwendung solcher Grafiken, Tondokumente, Videosequenzen und Texte in anderen elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung von uns nicht gestattet.',
+Customers from the rest of the world please refer to our <a href="https://www.100in.space/terms-of-service/">General Terms and Condition and Terms of Use ENPULSION GmbH</a>
+
+<b>PRIVACY POLICY</b>
+<a href="https://www.100in.space/privacy-policy/">Link to our Privacy Policy</a>
+
+<b>GOOGLE ANALYTICS</b>
+„Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA übertragen und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten von Google in Verbindung bringen. Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.“
+Nähere Informationen zu Nutzungsbedingungen und Datenschutz finden Sie unter http://www.google.com/analytics/terms/de.html bzw. unter http://www.google.com/intl/de/analytics/privacyoverview.html. Wir weisen Sie darauf hin, dass auf dieser Webseite Google Analytics um den Code „gat._anonymizeIp();“ erweitert wurde, um eine anonymisierte Erfassung von IP-Adressen (sog. IP-Masking) zu gewährleisten.
+
+<b>VERWEISE UND LINKS</b>
+Unser Angebot kann auch Links und Verweise zu Internangeboten Dritter enthalten. Wir möchten Sie darauf hinweisen, dass wir keinen Einfluss auf deren Inhalte haben und demnach auch keine Gewähr dafür übernehmen können. Allein der Drittanbieter ist für seine Internetseiten verantwortlich. Wir haben jedoch zum Zeitpunkt der Verlinkung bzw. des Verweises die Internetseiten Dritter auf mögliche offensichtliche Rechtsverstöße geprüft und keine solche feststellen können. Da eine laufende Überprüfung verlinkter Internetseiten nicht möglich und auch nicht zumutbar ist, können wir lediglich bei konkreten Anhaltspunkten reagieren. Sobald uns ein Rechtsverstoß bekannt wird, werden wir derartige Links bzw. Verweise umgehend entfernen.
+
+<b>INHALT DES ONLINEANGEBOTES</b>
+Wir übernehmen keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen uns, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen, sofern seitens Weboo kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt. Alle Angebote sind freibleibend und unverbindlich. Wir behalten es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.
+
+<b>URHEBER - UND KENNZEICHENRECHT</b>
+Wir sind bestrebt, in allen Publikationen die Urheberrechte der verwendeten Grafiken, Tondokumente, Videosequenzen und Texte zu beachten, von uns selbst erstellte Grafiken, Tondokumente, Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken, Tondokumente, Videosequenzen und Texte zurückzugreifen. Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte Dritter geschützt sind! Das Copyright für veröffentlichte, von uns selbst erstellte Objekte bleiben allein auf dieser Seiten. Eine Vervielfältigung oder Verwendung solcher Grafiken, Tondokumente, Videosequenzen und Texte in anderen elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung von uns nicht gestattet.',
         ], true);
 
         $this->addScreen('Privacy Policy', [

@@ -14,7 +14,7 @@
         }
     }">
     <!-- Background -->
-    <div class="fixed z-0 w-full h-full bg-cover bg-black" style="background-image: url('/images/{{ $currentScreen->bg_image ?? 'scene_001.png' }}');">
+    <div class="fixed z-0 w-full h-full bg-black bg-cover" style="background-image: url('/images/{{ $currentScreen->bg_image ?? 'scene_001.png' }}');">
         <template x-if="bgImage">
             <div :style="{ 'background-image': 'url(/images/content/' + bgImage + ')' }" class="w-full h-full bg-left-bottom bg-no-repeat bg-contain"></div>
         </template>
@@ -139,7 +139,7 @@
             @else
             <div class="page-content">
                 @if ($page->title)
-                <h1 class="mb-4 leading-none heading" :class="{ 'outlined': {{ !$isHidden }} }" id="{{ Str::slug($page->title) }}">
+                <h1 class="mb-4 leading-none heading {{ $isHidden ? 'text-center' : 'outlined' }}" id="{{ Str::slug($page->title) }}">
                     {{ $page->title }}
                 </h1>
                 @endif
@@ -171,7 +171,7 @@
                 @endif
 
                 <div class="leading-tight shadow-sm content-block">
-                    &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>&nbsp; &nbsp; &nbsp;', $page->text) !!}
+                    &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>' . ($isHidden ? '' : '&nbsp; &nbsp; &nbsp;'), $page->text) !!}
                 </div>
 
 
