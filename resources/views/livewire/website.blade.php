@@ -6,12 +6,19 @@
         scrolled: 0,
         splashFade: false,
         changeScroll() {
-            let el = document.getElementById('page' + this.page);
+            const el = document.getElementById('page' + this.page);
             if (!el) return;
             const top = parseInt(window.getComputedStyle(el.firstElementChild).getPropertyValue('padding-top'));
             const bottom = parseInt(window.getComputedStyle(el.firstElementChild).getPropertyValue('padding-bottom'));
             this.scrolled = -(el.getBoundingClientRect().top - top) / (el.offsetHeight - bottom);
-        }
+        },
+        stopEmbedded() {
+            const els = document.getElementsByClassName('youtube-embed');
+            if (!els || !els.length) return;
+            for (var f = 0; f < els.length; f++) {
+                els[f].src = els[f].src;
+            }
+        },
     }">
     <!-- Background -->
     <div class="fixed z-0 w-full h-full bg-black bg-cover" style="background-image: url('/images/{{ $currentScreen->bg_image ?? 'scene_001.png' }}');">
@@ -68,7 +75,7 @@
                 </a>
             </div>
         </div>
-        <div class="fixed bottom-0 w-full p-8">
+        <div class="fixed bottom-0 w-full p-8 pb-4">
             <div class="flex items-center justify-center">
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
                 <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
@@ -116,10 +123,10 @@
     </header>
 
     <!-- Current Screen Pages -->
-    <main x-ref="pages" @scroll.throttle="changeScroll" class="fixed z-20 w-full overflow-y-auto top-24 bottom-24 no-scrollbar snap snap-y snap-mandatory anim-page-in" :class="{ 'pages-static': {{ $isHidden }} }">
+    <main x-ref="pages" @scroll.throttle="changeScroll" class="fixed z-20 w-full overflow-y-auto top-24 bottom-24 no-scrollbar snap snap-y snap-mandatory anim-page-in" :class="{ 'pages-static': {{ +$isHidden }} }">
         @if ($isLanding)
         <!-- Splash -->
-        <section id="page0" class="w-full h-full mb-64 snap-start" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" x-on:click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
+        <section id="page0" class="w-full h-full mb-64" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" x-on:click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
             <div class="flex items-center justify-center h-full">
                 <img class="w-60 h-60 anim-splash-logo animate__infinite" :class="{ 'anim-splash-fade': (page === 0 && scrolled > 0.375) || splashFade }" src="{{ url('/images/100inSpace_Identity.png') }}">
             </div>
@@ -127,16 +134,14 @@
         @endif
         <!-- Screen Pages -->
         @foreach ($currentScreen->pages as $p => $page)
-        <section id="page{{ $p + 1 }}" class="w-full min-h-screen snap-start" :class="{ 'anim-fade-in-slow': visible }" x-data="{ visible: false, viewed: 0 }" x-intersect="bgVideo = '{{ $page->bg_video }}'; bgImage = '{{ $page->bg_image }}'" x-intersect:enter="visible = true; page = {{ $p + 1 }};" x-intersect:leave="visible = false">
+        <section id="page{{ $p + 1 }}" class="w-full min-h-screen" :class="{ 'anim-fade-in-slow': visible }" x-data="{ visible: false, viewed: 0 }" x-intersect="bgVideo = '{{ $page->bg_video }}'; bgImage = '{{ $page->bg_image }}'; visible = true; page = {{ $p + 1 }};" x-intersect:leave="stopEmbedded(); visible = false;">
             @if($page->video)
+            <!-- YouTube Embed -->
             <div class="flex justify-center video-content">
-                <div class="w-10/12 bg-no-repeat bg-contain sm:w-3/4" style="background-image: url('/images/videoContainer.svg');">
-                    <div class="px-1 py-9">
-                        <iframe class="w-full" src="{{ $page->video }}" style="height: 60vh;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
+                <iframe class="w-11/12 aspect-video youtube-embed" src="{{ $page->video }}" style="height: 60vh;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             @else
+
             <div class="page-content">
                 @if ($page->title)
                 <h1 class="mb-4 leading-none heading {{ $isHidden ? 'text-center' : 'outlined' }}" id="{{ Str::slug($page->title) }}">
@@ -145,7 +150,7 @@
                 @endif
 
                 @if ($page->image || $page->getMedia('gallery'))
-                <div class="p-8 sm:fixed sm:top-32 sm:left-8 page-gallery" x-show="page == {{ $p + 1 }}" x-transition.opacity x-cloak>
+                <div class="p-8 sm:fixed sm:top-1/3 sm:left-8 page-gallery" x-show="page == {{ $p + 1 }}" x-transition.opacity x-cloak>
                     @if ($page->image)
                     <img src="{{ url('/images/content/' . $page->image) }}">
                     @endif
