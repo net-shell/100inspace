@@ -138,7 +138,7 @@
             @if($page->video)
             <!-- YouTube Embed -->
             <div class="flex justify-center video-content">
-                <iframe class="w-11/12 aspect-video youtube-embed" src="{{ $page->video }}" style="height: 60vh;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="w-11/12 sm:w-1/2 aspect-video youtube-embed" src="{{ $page->video }}" style="height: 60vh;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             @else
 
