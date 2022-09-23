@@ -235,6 +235,16 @@
     </aside>
     @endif
 
+    @if (env('MODAL_REASON'))
+    <nav class="flex justify-center py-8" x-data="{ open: true }">
+        <div x-show="open" x-transition class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full backdrop-blur-lg">
+            <div class="w-1/4 h-1/2 py-12 rounded-full text-center bg-black/80 flex items-center justify-center" x-on:click.outside="open = false">
+                <span>{{ env('MODAL_REASON') }}</span>
+            </div>
+        </div>
+    </nav>
+    @endif
+
     <!-- Footer -->
     <footer class="fixed bottom-0 z-20 w-full p-8 pb-4">
         <div class="grid items-center grid-cols-3 justify-items-stretch">
