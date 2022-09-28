@@ -30,8 +30,11 @@ class PageResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->columnSpan(2)
                     ->maxLength(255),
-                Forms\Components\Textarea::make('text')
-                    ->rows(10)
+                Forms\Components\RichEditor::make('text')
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                    ])
                     ->columnSpan(2),
                 Forms\Components\Textarea::make('learn_more')
                     ->hint('Leave empty to disable the popup.')
@@ -43,9 +46,9 @@ class PageResource extends Resource
                     ->label('Background Video File'),
                 Forms\Components\TextInput::make('video')
                     ->url()
-                    ->hint('YouTube video URL')
+                    ->hint('Video URL for Embedding')
                     ->prefixIcon('heroicon-o-play')
-                    ->label('Embed YouTube Video'),
+                    ->label('Embeded Video'),
                 Forms\Components\TextInput::make('image')
                     ->label('Static Image File'),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('gallery')
