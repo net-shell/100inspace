@@ -3,6 +3,7 @@
         page: 0,
         bgImage: null,
         bgVideo: null,
+        bgPoster: null,
         scrolled: 0,
         splashFade: false,
         changeScroll() {
@@ -26,13 +27,8 @@
             <div :style="{ 'background-image': 'url(/images/content/' + bgImage + ')' }" class="w-full h-full bg-left-bottom bg-no-repeat bg-contain"></div>
         </template>
         <template x-if="bgVideo">
-            <video x-ref="bgvideo" class="object-cover w-full h-screen bg-video" :src="'/videos/' + bgVideo" autoplay muted="true">
+            <video x-ref="bgvideo" class="object-cover w-full h-screen bg-video" :src="'/videos/' + bgVideo" :poster="bgPoster" autoplay muted="true">
             </video>
-            <div class="hidden">
-                @foreach ($currentScreen->pages as $page)
-                <video src="{{ url('/videos/' . $page->bg_video) }}" preload="auto" muted="true"></video>
-                @endforeach
-            </div>
         </template>
     </div>
 
@@ -76,10 +72,10 @@
             </div>
         </div>
         <div class="fixed bottom-0 w-full p-8 pb-4">
-            <div class="flex items-center justify-center">
+            <a href="https://www.enpulsion.com/" class="flex items-center justify-center">
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
                 <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
-            </div>
+            </a>
             <div class="flex justify-between items-top">
                 <div>
                     <small class="inline leading-none opacity-50 sm:block">
@@ -127,22 +123,17 @@
         @if ($isLanding)
         <!-- Splash -->
         <section id="page0" class="w-full h-full mb-64" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" x-on:click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
-            <div class="flex items-center justify-center h-full">
+            <div class="flex flex-col items-center justify-center h-full gap-16">
                 <img class="w-60 h-60 anim-splash-logo animate__infinite" :class="{ 'anim-splash-fade': (page === 0 && scrolled > 0.375) || splashFade }" src="{{ url('/images/100inSpace_Identity.png') }}">
+                <img class="w-12 h-12 animate-bounce" src="{{ url('/images/arrow-Swipe.svg') }}">
             </div>
         </section>
         @endif
+
         <!-- Screen Pages -->
         @foreach ($currentScreen->pages as $p => $page)
-        <section id="page{{ $p + 1 }}" class="w-full min-h-screen" :class="{ 'anim-fade-in-slow': visible }" x-data="{ visible: false, viewed: 0 }" x-intersect="bgVideo = '{{ $page->bg_video }}'; bgImage = '{{ $page->bg_image }}'; visible = true; page = {{ $p + 1 }};" x-intersect:leave="stopEmbedded(); visible = false;">
-            @if($page->video)
-            <!-- YouTube Embed -->
-            <div class="flex justify-center video-content">
-                <iframe class="w-11/12 sm:w-1/2 aspect-video youtube-embed" src="{{ $page->video }}" style="height: 60vh;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            @else
-
-            <div class="page-content">
+        <section id="page{{ $p + 1 }}" class="w-full min-h-screen" :class="{ 'anim-fade-in-slow': visible }" x-data="{ visible: false, viewed: 0 }" x-intersect="bgVideo = '{{ $page->bg_video }}'; bgPoster = '{{ $page->bg_poster }}'; bgImage = '{{ $page->bg_image }}';" x-intersect:leave="stopEmbedded(); visible = false;">
+            <div class="page-content" x-intersect="visible = true; page = {{ $p + 1 }};">
                 @if ($page->title)
                 <h1 class="mb-4 leading-none heading {{ $isHidden ? 'text-center' : 'outlined' }}" id="{{ Str::slug($page->title) }}">
                     {{ $page->title }}
@@ -179,6 +170,12 @@
                     &nbsp; &nbsp; &nbsp;{!! str_replace("\n", '<br><br>' . ($isHidden ? '' : '&nbsp; &nbsp; &nbsp;'), $page->text) !!}
                 </div>
 
+                @if ($page->video)
+                <!-- YouTube Embed -->
+                <div class="py-8 video-content">
+                    <iframe class="w-full aspect-video youtube-embed" src="{{ $page->video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                @endif
 
                 @if ($page->learn_more)
                 <!-- Learn More -->
@@ -205,7 +202,6 @@
                 </nav>
                 @endif
             </div>
-            @endif
         </section>
         @endforeach
     </main>
@@ -238,7 +234,7 @@
     @if (env('MODAL_REASON'))
     <nav class="flex justify-center py-8" x-data="{ open: true }">
         <div x-show="open" x-transition class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full backdrop-blur-lg">
-            <div class="w-1/4 h-1/2 py-12 rounded-full text-center bg-black/80 flex items-center justify-center" x-on:click.outside="open = false">
+            <div class="flex items-center justify-center w-1/4 py-12 text-center rounded-full h-1/2 bg-black/80" x-on:click.outside="open = false">
                 <span>{{ env('MODAL_REASON') }}</span>
             </div>
         </div>
@@ -258,10 +254,10 @@
                 </a>
                 @endif
             </div>
-            <div class="flex items-center justify-center">
+            <a href="https://www.enpulsion.com/" class="flex items-center justify-center">
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
                 <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
-            </div>
+            </a>
             <div class="text-right">
                 @if (!$isLanding && $nextScreen)
                 <a href="{{ route('app', ['screen' => $nextScreen->slug]) }}" x-on:click="splashFade = true">

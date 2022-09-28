@@ -27,10 +27,6 @@ Life as we know today just wouldn’t be the same without satellites. And their 
 As the Near-Earth economy rapidly expanding and set to boom in the decade to come, ENPULSION is proud to be an enabler of this new wave of innovation.",
                 'bg_video' => 'sceneTransition_001-HQ.mp4',
             ],
-            '' => [
-                'video' => 'https://www.youtube.com/embed/Yu5vIDZKL58',
-                'bg_video' => 'sceneTransition_001-HQ.mp4',
-            ],
             'CELEBRATING 100 IN SPACE' => [
                 'text' => "ENPULSION is celebrating 100 active thrusters in space. Join us here at 100in.space.
 It is our celebration for achieving this important milestone — becoming the first smallsat electric propulsion systems provider to have 100 active thrusters orbiting the Earth!
@@ -113,6 +109,7 @@ All these new applications have the potential to significantly accelerate the co
             ],
             'MEET ANNA' => [
                 'text' => "When she first meets Alexander, the creator and CEO of ENPULSION, in the Vienna Technical Museum in 2022, Anna is a pioneering 12-year-old. She begins by asking him about the fancy tiny thruster that was on show there as well as space flight in general, and she quickly becomes thrilled about the subject. This enthusiasm fuels her steadfast determination to become an astronaut and won't fade in the years to come. Anna is the future, and you may watch her succeed through her greatest milestones as she realizes her goals and transforms into who she is. Help Anna find her destiny while learning about a possible vision for our own future.",
+                'video' => 'https://www.youtube.com/embed/Yu5vIDZKL58',
                 'bg_video' => 'Future_sceneTransition_002.mp4',
             ],
             'MOON ROCKS!' => [
@@ -133,7 +130,8 @@ All these new applications have the potential to significantly accelerate the co
             ],
             'HER FUTURE UNVEILS' => [
                 'text' => "<b>2047</b>  The Clean Sky Project uses the agility, precision and endurance of a host of intelligently controlled Ion Thrusters to avoid the real threat of the Kessler Effect in low-Earth orbit by removing targeted space debris. Involved in the initiative is Anna, who is now 37 years old, and she has become an expert in these technologies. But with this assignment, she is once again faced with a tremendous challenge.
-<b>2054</b>  Since the discoveries in 2044–2045 concerning the precious materials contained in asteroids as well as the realized potential to mine them, a movement centered on asteroid mining has exploded. This impulse quickly led to the final democratization of the space industry, which was already highly differentiated due to the complex convergence of interests among business enterprises, states, the free academy, and NGOs. Suddenly, every private person wanted to participate in mining, and the approaching asteroid Klondike in the years 2051/52 caused all hopes to grow to excess. Anna (age 44) develops into an idealistic spokesman for the responsible use of little bodies and promotes a socially and environmentally responsible lifestyle. Again, Anna could use all the assistance she can get…",
+                <b>2054</b>  Since the discoveries in 2044–2045 concerning the precious materials contained in asteroids as well as the realized potential to mine them, a movement centered on asteroid mining has exploded. This impulse quickly led to the final democratization of the space industry, which was already highly differentiated due to the complex convergence of interests among business enterprises, states, the free academy, and NGOs. Suddenly, every private person wanted to participate in mining, and the approaching asteroid Klondike in the years 2051/52 caused all hopes to grow to excess. Anna (age 44) develops into an idealistic spokesman for the responsible use of little bodies and promotes a socially and environmentally responsible lifestyle. Again, Anna could use all the assistance she can get…",
+                'bg_video' => 'Future_sceneTransition_006.mp4',
             ],
         ], false, 'emptySpace.png');
 

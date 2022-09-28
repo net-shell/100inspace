@@ -15,9 +15,17 @@ class Page extends Model implements HasMedia
 
     protected $fillable = ['title', 'text', 'learn_more', 'image', 'video', 'bg_video', 'weight', 'screen_id'];
 
+    protected $appends = ['bg_poster'];
+
     public function screen()
     {
         return $this->belongsTo(Screen::class)->withoutGlobalScopes();
+    }
+
+    public function getBgPosterAttribute()
+    {
+        $filename = str_replace('.mp4', '.jpg', $this->attributes['bg_video']);
+        return url('/videos/posters/' . $filename);
     }
 
     protected static function boot()
