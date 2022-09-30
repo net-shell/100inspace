@@ -74,7 +74,7 @@
         <div class="fixed bottom-0 w-full p-8 pb-4">
             <a href="https://www.enpulsion.com/" class="flex items-center justify-center">
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
-                <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
+                <img class="h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
             </a>
             <div class="flex justify-between items-top">
                 <div>
@@ -123,7 +123,8 @@
         @if ($isLanding)
         <!-- Splash -->
         <section id="page0" class="w-full h-full mb-64" :class="{ 'anim-fade-in-slow': page === 0 && scrolled }" x-intersect="page = 0; bgVideo = '';" x-on:click="document.querySelector('#page1').scrollIntoView({ behavior: 'smooth' });">
-            <div class="flex flex-col items-center justify-center h-full gap-16">
+            <div class="flex flex-col items-center justify-between h-full gap-16">
+                <span></span>
                 <img class="w-60 h-60 anim-splash-logo animate__infinite" :class="{ 'anim-splash-fade': (page === 0 && scrolled > 0.375) || splashFade }" src="{{ url('/images/100inSpace_Identity.png') }}">
                 <img class="w-12 h-12 animate-bounce" src="{{ url('/images/arrow-Swipe.svg') }}">
             </div>
@@ -256,7 +257,7 @@
             </div>
             <a href="https://www.enpulsion.com/" class="flex items-center justify-center">
                 <span class="text-xs whitespace-nowrap">Powered by &nbsp;</span>
-                <img class="w-auto h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
+                <img class="h-8" src="{{ url('/images/Enpulsion_Logo_Scaled.png') }}">
             </a>
             <div class="text-right">
                 @if (!$isLanding && $nextScreen)
